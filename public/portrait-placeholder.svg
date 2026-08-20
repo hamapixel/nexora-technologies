@@ -1,0 +1,21 @@
+<svg width="900" height="1100" viewBox="0 0 900 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="70" y1="30" x2="840" y2="1080" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#DDE8FF"/><stop offset="1" stop-color="#BFCFFF"/>
+  </linearGradient>
+  <linearGradient id="shirt" x1="250" y1="710" x2="670" y2="1060" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#152943"/><stop offset="1" stop-color="#081421"/>
+  </linearGradient>
+</defs>
+<rect width="900" height="1100" rx="55" fill="url(#bg)"/>
+<circle cx="718" cy="180" r="128" fill="#4F7CFF" fill-opacity=".13"/>
+<rect x="86" y="130" width="145" height="145" rx="38" transform="rotate(-12 86 130)" fill="#8B5CF6" fill-opacity=".13"/>
+<circle cx="450" cy="390" r="195" fill="#D4A786"/>
+<path d="M275 365C278 225 350 150 455 150C575 150 643 246 624 378C590 314 525 278 443 280C380 282 329 307 275 365Z" fill="#172436"/>
+<path d="M236 1090C244 840 325 700 447 700C578 700 665 848 680 1090H236Z" fill="url(#shirt)"/>
+<path d="M390 708L450 802L511 708" stroke="#4F7CFF" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="390" cy="401" r="15" fill="#172436"/><circle cx="516" cy="401" r="15" fill="#172436"/>
+<path d="M400 502C431 524 475 525 506 500" stroke="#8A5844" stroke-width="13" stroke-linecap="round"/>
+<rect x="235" y="930" width="430" height="86" rx="43" fill="white" fill-opacity=".78"/>
+<text x="450" y="985" text-anchor="middle" fill="#315EE8" font-size="31" font-family="Arial,sans-serif" font-weight="700">VOTRE PHOTO</text>
+</svg>

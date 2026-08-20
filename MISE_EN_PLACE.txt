@@ -1,0 +1,38 @@
+NEXORA TECHNOLOGIES — MISE EN PLACE ET HÉBERGEMENT
+
+1. Décompresser nexora-technologies-v1.zip
+2. Ouvrir le dossier nexora-technologies dans VS Code
+3. Lancer :
+
+npm install
+npm run dev
+
+4. Vérifier le build :
+
+npm run build
+npm run preview
+
+5. Créer sur GitHub un nouveau dépôt PUBLIC :
+nexora-technologies
+
+6. Dans le dossier du projet :
+
+git init
+git branch -M main
+git add .
+git commit -m "Launch Nexora Technologies website"
+git remote add origin https://github.com/hamapixel/nexora-technologies.git
+git push -u origin main
+
+7. GitHub > nexora-technologies > Settings > Pages
+Dans Build and deployment > Source : GitHub Actions
+
+8. Le workflow de déploiement est déjà dans :
+.github/workflows/deploy.yml
+
+À CONFIGURER AVANT VERSION FINALE :
+- vraie photo du fondateur
+- numéro WhatsApp Nexora
+- email officiel
+- liens GitHub/réseaux sociaux
+- futur nom de domaine
