@@ -179,6 +179,29 @@ export default function App() {
     document.body.classList.toggle("menu-locked", menuOpen);
     return () => document.body.classList.remove("menu-locked");
   }, [menuOpen]);
+  useEffect(() => {
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const elements = document.querySelectorAll(
+      ".portfolio-section .project-card, .services-section .service-card, .method-section .process-step, .showroom-section .section-head"
+    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -25px 0px" });
+    elements.forEach((item) => {
+      item.classList.add("reveal-pending");
+      observer.observe(item);
+    });
+    return () => {
+      observer.disconnect();
+      elements.forEach((item) => item.classList.remove("reveal-pending", "reveal-visible"));
+    };
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
   const year = new Date().getFullYear();
 
