@@ -1,46 +1,67 @@
 # BTDIGIT — Agence Digitale
 
-Site vitrine de **BTDIGIT**, agence de solutions digitales basée à Bamako (Mali), réalisée dans le dépôt historique `hamapixel/nexora-technologies` pour préserver l'adresse GitHub Pages.
+Vitrine de **BTDIGIT**, agence de solutions digitales à Bamako, publiée via GitHub Pages dans le dépôt historique `hamapixel/nexora-technologies`.
 
-## Direction artistique
+## Site multilingue
 
-- Logo BTDIGIT blanc et violet fourni par le fondateur : `public/btdigit-logo.webp`.
-- Favicon BT et orbite assorti : `public/btdigit-icon.svg`.
-- Palette : **bleu nuit**, violet de marque, nuances glacées et petites touches orange.
-- Police des titres : **Plus Jakarta Sans** ; police des textes : **DM Sans**, avec fallbacks système.
-- Fond abstrait fluide : `src/assets/btdigit-ribbon.svg`, intégré au build Vite.
-- Animations CSS `@keyframes` : `ribbonDrift`, `auroraFloat`, `orbitBreathe`, `showcaseFloat` et `heroAppear`.
-- Sections animées à l'apparition par `IntersectionObserver`; adaptation `prefers-reduced-motion` pour éviter les animations imposées.
-- Thème sombre/clair, navigation responsive, portrait du fondateur dont la tête reste visible.
+Le site propose quatre langues avec drapeaux vectoriels dans la barre de navigation :
 
-**La démonstration automobile 3D et le moteur WebGL ont été retirés** : ce site présente uniquement les véritables services et projets de l'agence.
+- 🇫🇷 **Français** (`fr`) — langue par défaut.
+- 🇬🇧 **English** (`en`).
+- 🇲🇱 **Bamanankan / Bambara** (`bm`) — transcription latine.
+- 🇪🇸 **Español** (`es`).
 
-## Portfolio
+Tous les textes de l'interface sont centralisés dans `src/i18n.js` : menus, titres, slogans, services, trois projets du portfolio, maquettes illustratives, présentation du fondateur, étapes de réalisation, FAQ, formulaire, boutons, messages WhatsApp, libellés accessibles et pied de page.
 
-- **StockPro Premium** — plateforme SaaS de gestion commerciale : https://stockpro.ml/
-- **VestiFlow** — logiciel Windows de vente de vêtements et gestion des tickets.
-- **Horizon Visa & Immo** — site web conçu pour un client ; URL publique à compléter après validation.
+Le changement de langue s'applique immédiatement, sans rechargement de page, et est mémorisé sur l'appareil dans `localStorage` (`btdigit-language`). Le code met également à jour l'attribut HTML `lang`, le titre de l'onglet et la description affichée dans le document côté navigateur. Les drapeaux SVG indépendants du système d'exploitation se trouvent dans `public/flags/`.
 
-Les aperçus des produits sont des illustrations de présentation, pas des captures officielles.
+**Qualité linguistique :** la version bambara est une première adaptation complète proposée en alphabet latin. Une relecture par un locuteur natif / traducteur spécialisé est recommandée avant d'utiliser ces formulations dans des engagements commerciaux. Les noms de marques et termes techniques courants (SaaS, PWA, WhatsApp) sont conservés.
 
-## Stack
+## Identité et portfolio
 
-React 18 · Vite 6 · CSS responsive · Lucide React.
+- Logo officiel BTDIGIT blanc et violet : `public/btdigit-logo.webp`.
+- Typographies : Plus Jakarta Sans et DM Sans.
+- Fonds animés en bleu nuit et violet : `src/assets/btdigit-ribbon.svg`.
+- Animations CSS `@keyframes`, avec respect de `prefers-reduced-motion`.
+- **StockPro Premium** : https://stockpro.ml/
+- **VestiFlow** : logiciel Windows pour la vente textile.
+- **Horizon Visa & Immo** : réalisation client.
+
+Les visuels de projets restent des illustrations : ne pas les présenter comme des captures officielles. Le showroom automobile 3D a été retiré.
+
+## Mise à jour locale (Windows PowerShell)
+
+Se placer dans **le dossier réel du dépôt cloné**, sans créer un second projet :
+
+```powershell
+git status
+git switch main
+git pull --ff-only origin main
+npm ci
+npm run test:i18n
+npm run dev
+```
+
+Ouvrir l'adresse locale affichée par Vite (généralement http://localhost:5173).
+
+Si `git status` montre des fichiers modifiés, **ne pas forcer `git pull`** : sauvegarder, committer ou mettre les changements de côté avant de synchroniser. Le dépôt GitHub ne permet pas de modifier directement les fichiers sur le PC Windows sans exécuter ces commandes localement.
+
+## Tests et déploiement
 
 ```bash
 npm ci
-npm run dev
+npm run test:i18n
 npm run build
 npm run preview
 ```
 
-GitHub Actions vérifie le build des pull requests puis déploie le site sur GitHub Pages après fusion dans `main`.
+Le workflow `.github/workflows/ci.yml` valide les quatre langues et la compilation sur les pull requests. Le workflow GitHub Pages publie la branche `main` après fusion.
 
-URL : https://hamapixel.github.io/nexora-technologies/
+Site : https://hamapixel.github.io/nexora-technologies/
 
 ## Contact
 
 - WhatsApp : +223 74 98 07 44
 - Email : hamaatraore@gmail.com
 
-Le formulaire prépare un message WhatsApp sans enregistrer les coordonnées sur le site.
+Le formulaire prépare un message dans la langue sélectionnée et ne stocke pas les informations sur le serveur.
