@@ -1,53 +1,65 @@
-# Nexora Technologies
+# BTDIGIT — Agence Digitale
 
-Site vitrine et portfolio de **Nexora Technologies**, activité de création de sites web, d'applications et de logiciels de gestion basée à Bamako (Mali).
+Site vitrine de l'agence **BTDIGIT** et de son fondateur, développeur web à Bamako (Mali). Le site s'appuie sur le dépôt historique `hamapixel/nexora-technologies` pour conserver l'adresse GitHub Pages existante.
 
-## Réalisations présentées
+## Identité
 
-- **StockPro Premium** — plateforme SaaS de gestion commerciale : [stockpro.ml](https://stockpro.ml/).
-- **VestiFlow** — logiciel Windows de vente d'habits, gestion d'articles et tickets de caisse ; présentation sur demande.
-- **Horizon Visa & Immo** — projet de site web pour un client ; lien public à ajouter uniquement après validation.
+- **Logo :** `public/btdigit-logo.webp` — logo BTDIGIT blanc et violet fourni par le fondateur, recadré et optimisé pour l'affichage web.
+- **Favicon :** `public/btdigit-icon.svg` — emblème BT/orbite assorti.
+- Direction artistique : violet, noir profond, blanc ; thème jour/nuit.
+- **Portfolio** conservé, sans projets inventés.
 
-Les visuels intégrés aux cartes sont des **illustrations de présentation**, et non des captures officielles des produits. Les liens des projets non publiés ne sont pas inventés.
+## Portfolio
 
-## Identité visuelle
+- **StockPro Premium** — SaaS de gestion commerciale : https://stockpro.ml/
+- **VestiFlow** — logiciel Windows de vente de vêtements.
+- **Horizon Visa & Immo** — réalisation de site web pour un client (URL publique à valider).
 
-Trois fichiers SVG originaux et modifiables sont inclus :
-- `public/nexora-symbol.svg` : monogramme N digital et favicon.
-- `public/nexora-logo.svg` : logo horizontal pour fond sombre.
-- `public/nexora-logo-light.svg` : logo horizontal pour fond clair.
+Les aperçus de produits existants sont des **illustrations de présentation**. Les remplacer par des captures officielles après vérification.
 
-## Développement
+## Démonstration 3D
 
-Stack : React 18, Vite 6, Lucide React et CSS responsive.
+`src/Showroom3D.jsx` implémente un **prototype automobile 3D interactif** :
+- rotation de la caméra par glissement ;
+- zoom à la molette ;
+- quatre couleurs de carrosserie ;
+- animation des deux portes ;
+- boutons de rotation et remise à zéro ;
+- version mobile tactile et prise en compte des préférences de réduction du mouvement.
+
+Le moteur Three.js est chargé **sur demande**, uniquement après clic sur « Lancer la démo 3D », depuis un CDN public. En cas de coupure réseau ou d'absence de WebGL, un message d'erreur clair s'affiche : le reste du site reste utilisable. Le modèle est schématique : **il ne représente aucun véhicule commercial réel**.
+
+Pour un véritable showroom de véhicules avec carrosserie fidèle, textures et portes réalistes, fournir les modèles 3D GLB/glTF optimisés ou une scène Spline autorisée. Ne pas faire passer un prototype conceptuel pour un modèle officiel.
+
+## Stack
+
+- React 18, Vite 6, CSS responsive, Lucide React.
+- Démonstration WebGL : Three.js 0.180.0 chargé à la demande via jsDelivr.
+- CI : GitHub Actions, `npm ci && npm run build`.
+
+Démarrer en local :
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Construire et vérifier la version de production :
+Build :
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Publication
+## Déploiement
 
-Le site est publié via GitHub Pages. Le workflow `.github/workflows/deploy.yml` reconstruit et déploie automatiquement à chaque push sur `main`. Le workflow `ci.yml` contrôle le build des pull requests.
+GitHub Pages : https://hamapixel.github.io/nexora-technologies/
 
-URL publique : https://hamapixel.github.io/nexora-technologies/
-
-La base Vite `./` de `vite.config.js` est nécessaire pour les chemins des fichiers sous le sous-répertoire GitHub Pages.
+Le workflow `.github/workflows/deploy.yml` publie les modifications poussées sur `main`.
 
 ## Contact
 
 - WhatsApp : +223 74 98 07 44
 - Email : hamaatraore@gmail.com
 
-Le formulaire ne possède pas de backend. À la validation, il prépare un message pour WhatsApp dans le navigateur et n'enregistre pas les informations sur le site.
-
-## À personnaliser
-
-Ajouter ultérieurement des captures officielles, la fiche VestiFlow et l'URL publique validée d'Horizon Visa & Immo. Ne pas exposer de liens privés ou de données clients.
+Le formulaire de contact prépare un message WhatsApp sans conserver les informations sur le site.
