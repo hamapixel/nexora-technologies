@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Showroom3D from "./Showroom3D";
 import {
   ArrowRight, ArrowUpRight, BadgeCheck, Boxes, Check, ChevronDown, Code2,
   Database, ExternalLink, Globe2, Github, Laptop, Layers3, Mail, MapPin,
@@ -182,7 +181,7 @@ export default function App() {
   useEffect(() => {
     if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const elements = document.querySelectorAll(
-      ".portfolio-section .project-card, .services-section .service-card, .method-section .process-step, .showroom-section .section-head"
+      ".portfolio-section .project-card, .services-section .service-card, .method-section .process-step, .about-section .about-content"
     );
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -230,7 +229,6 @@ export default function App() {
           <nav className={"navigation " + (menuOpen ? "is-open" : "")} id="site-navigation" aria-label="Navigation principale">
             <a href="#accueil" onClick={closeMenu}>Accueil</a>
             <a href="#realisations" onClick={closeMenu}>Portfolio</a>
-            <a href="#studio3d" onClick={closeMenu}>Studio 3D</a>
             <a href="#services" onClick={closeMenu}>Services</a>
             <a href="#apropos" onClick={closeMenu}>À propos</a>
             <a className="nav-mobile-contact" href="#contact" onClick={closeMenu}>Contact <ArrowRight size={16}/></a>
@@ -246,11 +244,13 @@ export default function App() {
       <main id="contenu">
         <section className="hero" id="accueil">
           <div className="hero-grid" aria-hidden="true"/>
+          <div className="hero-ribbon" aria-hidden="true"/>
+          <div className="hero-aurora" aria-hidden="true"/>
           <div className="container hero-layout">
             <div className="hero-copy">
               <Eyebrow>BTDIGIT · Agence digitale · Bamako</Eyebrow>
-              <h1>Des idées ambitieuses.<br/><span>Des solutions</span><br/>qui prennent vie.</h1>
-              <p className="hero-description">BTDIGIT est une agence de solutions digitales fondée à Bamako. Nous imaginons des sites web, des logiciels métier et des expériences interactives pour transformer les idées en projets concrets.</p>
+              <h1>Vos ambitions méritent<br/><span>un digital à la hauteur.</span></h1>
+              <p className="hero-description">BTDIGIT accompagne les entreprises dans leur transformation digitale : sites web élégants, applications sur mesure et logiciels de gestion adaptés à leur activité.</p>
               <div className="hero-ctas">
                 <a className="btn btn-primary" href="#realisations">Voir le portfolio <ArrowUpRight size={19}/></a>
                 <a className="btn btn-outline" href="#contact">Discutons de votre projet <ArrowRight size={18}/></a>
@@ -261,7 +261,7 @@ export default function App() {
                 <span><MapPin size={17}/> Agence malienne</span>
               </div>
             </div>
-            <div className="hero-showcase" aria-label="Présentation illustrée de nos réalisations">
+            <div className="hero-showcase" aria-label="Présentation illustrée de notre portfolio">
               <div className="showcase-halo" aria-hidden="true"/>
               <div className="showcase-main">
                 <div className="showcase-top"><span><span className="showcase-signal"/> BTDIGIT / PORTFOLIO</span><span>2026</span></div>
@@ -276,21 +276,8 @@ export default function App() {
               <div className="showcase-tag tag-bottom"><span>03</span><small>réalisations<br/>à découvrir</small></div>
             </div>
           </div>
-          <div className="container hero-marquee" aria-label="Nos domaines d'expertise"><span>UNE EXPERTISE CONCRÈTE</span><span>Sites web <i/> Logiciels métier <i/> Applications web <i/> Design d'interfaces</span></div>
+          <div className="container hero-marquee" aria-label="Nos domaines d'expertise"><span>NOTRE SAVOIR-FAIRE</span><span>Sites web <i/> Logiciels métier <i/> Applications web <i/> Design d'interfaces</span></div>
         </section>
-
-        <section className="section portfolio-section" id="realisations">
-          <div className="container">
-            <div className="section-head portfolio-heading">
-              <div><Eyebrow>Portfolio</Eyebrow><h2>Du concret.<br/><span>Pas seulement des concepts.</span></h2></div>
-              <p>Des réalisations concrètes : une plateforme SaaS, un logiciel de bureau et un site web conçu pour un client.</p>
-            </div>
-            <div className="portfolio-grid">{projects.map((project) => <ProjectCard project={project} key={project.id}/>)}</div>
-            <p className="portfolio-caption"><Sparkles size={16}/> Les visuels des projets sont des illustrations de présentation et non des captures d'écran officielles.</p>
-          </div>
-        </section>
-
-        <Showroom3D />
 
         <section className="section services-section" id="services">
           <div className="container">
@@ -303,6 +290,27 @@ export default function App() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="section portfolio-section" id="realisations">
+          <div className="container">
+            <div className="section-head portfolio-heading">
+              <div><Eyebrow>Portfolio</Eyebrow><h2>Du concret.<br/><span>Pas seulement des concepts.</span></h2></div>
+              <p>Des projets réels qui racontent ce que nous savons construire : une plateforme SaaS, un logiciel de bureau et un site web client.</p>
+            </div>
+            <div className="portfolio-grid">{projects.map((project) => <ProjectCard project={project} key={project.id}/>)}</div>
+            <p className="portfolio-caption"><Sparkles size={16}/> Les visuels des projets sont des illustrations de présentation et non des captures d'écran officielles.</p>
+          </div>
+        </section>
+
+        <section className="agency-banner" aria-label="Discutons de votre projet">
+          <div className="banner-ribbon" aria-hidden="true"/>
+          <div className="container agency-banner-inner">
+            <span className="eyebrow"><span className="eyebrow-dot"/> Des idées aux résultats</span>
+            <h2>Chaque projet est unique.<br/><span>Faisons briller le vôtre.</span></h2>
+            <p>Une identité forte, une expérience fluide et une solution qui répond aux vrais besoins de votre entreprise.</p>
+            <a href="#contact" className="btn btn-primary">Parlons de votre projet <ArrowUpRight size={19}/></a>
           </div>
         </section>
 
@@ -362,7 +370,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <div className="container footer-top"><div><Brand/><p>Sites web, applications et logiciels de gestion. La technologie au service de vos ambitions.</p></div><div className="footer-column"><strong>Explorer</strong><a href="#realisations">Portfolio</a><a href="#studio3d">Studio 3D</a><a href="#services">Services</a><a href="#apropos">À propos</a><a href="#faq">FAQ</a></div><div className="footer-column"><strong>Nous retrouver</strong><a href="https://stockpro.ml/" target="_blank" rel="noopener noreferrer">StockPro Premium <ExternalLink size={13}/></a><a href="https://github.com/hamapixel" target="_blank" rel="noopener noreferrer">GitHub <Github size={14}/></a><a href={"mailto:" + EMAIL}>Email <Mail size={14}/></a></div></div>
+        <div className="container footer-top"><div><Brand/><p>Sites web, applications et logiciels de gestion. La technologie au service de vos ambitions.</p></div><div className="footer-column"><strong>Explorer</strong><a href="#realisations">Portfolio</a><a href="#services">Services</a><a href="#apropos">À propos</a><a href="#faq">FAQ</a></div><div className="footer-column"><strong>Nous retrouver</strong><a href="https://stockpro.ml/" target="_blank" rel="noopener noreferrer">StockPro Premium <ExternalLink size={13}/></a><a href="https://github.com/hamapixel" target="_blank" rel="noopener noreferrer">GitHub <Github size={14}/></a><a href={"mailto:" + EMAIL}>Email <Mail size={14}/></a></div></div>
         <div className="container footer-bottom"><span>© {year} BTDIGIT. Tous droits réservés.</span><span>Conçu avec passion à Bamako, Mali.</span></div>
       </footer>
       <a className="floating-whatsapp" href={"https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Bonjour BTDIGIT, j'aimerais discuter d'un projet.")} target="_blank" rel="noopener noreferrer" aria-label="Contacter BTDIGIT sur WhatsApp"><MessageCircle size={23}/></a>
