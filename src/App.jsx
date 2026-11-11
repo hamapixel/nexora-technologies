@@ -1,460 +1,279 @@
+import { useEffect, useState } from "react";
 import {
-  ArrowRight,
-  Boxes,
-  Building2,
-  CheckCircle2,
-  ChevronDown,
-  Code2,
-  Cpu,
-  Database,
-  Github,
-  Globe2,
-  HeartPulse,
-  Layers3,
-  Menu,
-  MessageCircle,
-  MonitorSmartphone,
-  Moon,
-  PackageSearch,
-  Rocket,
-  School,
-  ShieldCheck,
-  Sparkles,
-  Sun,
-  X,
-  Zap,
+  ArrowRight, ArrowUpRight, BadgeCheck, Boxes, Check, ChevronDown, Code2,
+  Database, ExternalLink, Globe2, Github, Laptop, Layers3, Mail, MapPin,
+  Menu, MessageCircle, MonitorSmartphone, Moon, Package, Phone, Rocket,
+  ShieldCheck, Shirt, Sparkles, Sun, Workflow, X,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+
+const BASE = import.meta.env.BASE_URL;
+const WHATSAPP = "22374980744";
+const EMAIL = "hamaatraore@gmail.com";
+
+const projects = [
+  {
+    id: "stockpro",
+    number: "01",
+    type: "SaaS · Gestion commerciale",
+    title: "StockPro Premium",
+    description: "Une plateforme de gestion commerciale conçue pour aider les entreprises à piloter leurs opérations depuis un seul espace.",
+    features: ["Stocks & multi-dépôts", "Ventes, achats & caisse", "Factures & suivi client"],
+    status: "Plateforme en ligne",
+    url: "https://stockpro.ml/",
+    action: "Visiter StockPro",
+  },
+  {
+    id: "vestiflow",
+    number: "02",
+    type: "Logiciel Windows · Commerce textile",
+    title: "VestiFlow",
+    description: "Un logiciel de vente d'habits pensé pour le quotidien des boutiques : gestion des articles, encaissement et tickets de caisse.",
+    features: ["Vente en boutique", "Gestion des articles", "Tickets & base locale"],
+    status: "Logiciel de bureau",
+    action: "Demander une démonstration",
+  },
+  {
+    id: "horizon",
+    number: "03",
+    type: "Site web · Projet client",
+    title: "Horizon Visa & Immo",
+    description: "Conception d'un site professionnel pour présenter les activités d'Horizon Visa & Immo autour des visas et de l'immobilier.",
+    features: ["Présence en ligne", "Présentation des services", "Expérience responsive"],
+    status: "Réalisation client",
+    action: "Parler d'un site similaire",
+  },
+];
 
 const services = [
-  {
-    icon: Code2,
-    title: "Développement sur mesure",
-    text: "Applications métier pensées autour de vos processus, de vos équipes et de votre croissance.",
-  },
-  {
-    icon: MonitorSmartphone,
-    title: "Applications web & PWA",
-    text: "Interfaces rapides, élégantes et responsives sur téléphone, tablette et ordinateur.",
-  },
-  {
-    icon: Database,
-    title: "Systèmes de gestion",
-    text: "Stock, ventes, caisse, clients, rapports, automatisations et données centralisées.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Architecture & sécurité",
-    text: "Séparation des accès, traçabilité, contrôle des rôles et fondations robustes pour la production.",
-  },
-  {
-    icon: Layers3,
-    title: "Modernisation digitale",
-    text: "Transformation de tâches manuelles en workflows numériques plus simples et mesurables.",
-  },
-  {
-    icon: Rocket,
-    title: "Accompagnement produit",
-    text: "De l’idée à la mise en ligne : conception, identité, expérience utilisateur et évolution.",
-  },
+  { icon: Code2, number: "01", title: "Sites web professionnels", description: "Des sites vitrines rapides, élégants et conçus pour inspirer confiance." },
+  { icon: MonitorSmartphone, number: "02", title: "Applications web & PWA", description: "Des outils accessibles sur téléphone et ordinateur, adaptés à chaque activité." },
+  { icon: Database, number: "03", title: "Logiciels de gestion", description: "Stocks, ventes, caisse, facturation et processus métier réunis dans une interface claire." },
+  { icon: Workflow, number: "04", title: "Solutions sur mesure", description: "Du besoin métier au déploiement, des solutions conçues pour votre fonctionnement réel." },
 ];
 
-const products = [
-  {
-    icon: Boxes,
-    badge: "Produit phare",
-    title: "StockPro Premium",
-    text: "Gestion commerciale multi-entreprises : stock, ventes, achats, caisse, dettes, documents et rapports.",
-    status: "En développement avancé",
-  },
-  {
-    icon: School,
-    badge: "Education",
-    title: "Nexora School",
-    text: "Une vision moderne de la gestion scolaire : élèves, notes, bulletins, présence et suivi académique.",
-    status: "Roadmap",
-  },
-  {
-    icon: HeartPulse,
-    badge: "HealthTech",
-    title: "Nexora Blood",
-    text: "Traçabilité du don, prélèvement, analyses, stock sanguin et distribution pour centres de santé.",
-    status: "Concept produit",
-  },
+const process = [
+  { number: "01", title: "Comprendre", description: "Écouter votre activité, vos contraintes et vos objectifs." },
+  { number: "02", title: "Concevoir", description: "Définir un parcours fluide et une identité visuelle cohérente." },
+  { number: "03", title: "Développer", description: "Construire une solution propre, rapide et maintenable." },
+  { number: "04", title: "Accompagner", description: "Tester, mettre en ligne et améliorer selon les retours." },
 ];
 
-const faqs = [
-  {
-    q: "Nexora Technologies développe quel type de solutions ?",
-    a: "Nous concevons principalement des applications web, PWA et logiciels de gestion adaptés aux besoins opérationnels des entreprises et organisations.",
-  },
-  {
-    q: "Vos applications fonctionnent-elles sur téléphone ?",
-    a: "Oui. L’expérience mobile fait partie de la conception dès le départ : navigation claire, boutons adaptés au tactile et absence de débordement horizontal.",
-  },
-  {
-    q: "Pouvez-vous créer une application spécifique à mon activité ?",
-    a: "Oui. Nous pouvons partir de votre métier, analyser vos opérations puis créer une solution sur mesure ou adapter une base existante.",
-  },
-  {
-    q: "Est-ce que Nexora peut accompagner un projet après sa mise en ligne ?",
-    a: "Oui. Une application professionnelle doit évoluer : corrections, sécurité, nouvelles fonctionnalités et améliorations d’expérience peuvent être prévues dans l’accompagnement.",
-  },
-  {
-    q: "Comment demander une démonstration ou un devis ?",
-    a: "Utilisez la section Contact. Le formulaire prépare votre demande et l’envoie directement vers WhatsApp.",
-  },
+const questions = [
+  { q: "Quels types de projets réalisez-vous ?", a: "Nous réalisons des sites web professionnels, applications web, PWA et logiciels de gestion adaptés aux besoins des entreprises et des commerces." },
+  { q: "StockPro Premium est-il accessible en ligne ?", a: "Oui. Vous pouvez découvrir la plateforme sur stockpro.ml. Les fonctionnalités et formules disponibles sont présentées sur son site officiel." },
+  { q: "Peut-on demander une démonstration de VestiFlow ?", a: "Oui. Contactez Nexora par WhatsApp pour discuter du logiciel Windows et organiser une présentation." },
+  { q: "Comment obtenir un devis pour mon entreprise ?", a: "Présentez votre projet dans le formulaire de contact. Votre demande est préparée pour WhatsApp, sans enregistrement sur ce site vitrine." },
 ];
 
-const navigation = [
-  ["#accueil", "Accueil"],
-  ["#services", "Services"],
-  ["#produits", "Produits"],
-  ["#apropos", "À propos"],
-  ["#faq", "FAQ"],
-  ["#contact", "Contact"],
-];
-
-function Logo() {
+function Brand({ onClick }) {
   return (
-    <a href="#accueil" className="brand" aria-label="Nexora Technologies - Accueil">
-      <span className="brand-mark" aria-hidden="true">
-        <span>N</span>
-      </span>
-      <span className="brand-copy">
-        <strong>NEXORA</strong>
-        <small>TECHNOLOGIES</small>
-      </span>
+    <a className="brand" href="#accueil" onClick={onClick} aria-label="Nexora Technologies, retour à l'accueil">
+      <img className="brand-symbol" src={BASE + "nexora-symbol.svg"} alt="" width="46" height="46" />
+      <span className="brand-words"><strong>NEXORA</strong><small>TECHNOLOGIES</small></span>
     </a>
   );
 }
 
-function SectionHeading({ eyebrow, title, text, centered = false }) {
+function Eyebrow({ children }) {
+  return <span className="eyebrow"><span className="eyebrow-dot" />{children}</span>;
+}
+
+function ProjectArtwork({ type }) {
+  if (type === "stockpro") {
+    return (
+      <div className="project-art project-art-stock">
+        <div className="art-browser"><span /><span /><span /><em>StockPro Premium</em></div>
+        <div className="art-stock-body">
+          <div className="art-rail"><span /><span /><span /><span /></div>
+          <div className="art-stock-content">
+            <div className="art-small-title">Vue d'ensemble</div>
+            <div className="art-stat-row">
+              <div><small>Stock</small><Boxes size={19} /><b>Produits</b></div>
+              <div><small>Ventes</small><ArrowUpRight size={19} /><b>Suivi</b></div>
+              <div><small>Gestion</small><ShieldCheck size={19} /><b>Contrôle</b></div>
+            </div>
+            <div className="art-chart">
+              <div className="art-chart-head"><span>Activité commerciale</span><span>↗</span></div>
+              <svg viewBox="0 0 440 100" preserveAspectRatio="none" aria-hidden="true">
+                <defs><linearGradient id="stock-fill" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#489aff" stopOpacity=".28"/><stop offset="1" stopColor="#489aff" stopOpacity="0"/></linearGradient></defs>
+                <path d="M0 82C35 80 45 53 83 62S148 91 187 53 255 78 299 35 369 52 440 11V100H0Z" fill="url(#stock-fill)"/>
+                <path d="M0 82C35 80 45 53 83 62S148 91 187 53 255 78 299 35 369 52 440 11" fill="none" stroke="#58a5ff" strokeWidth="4" strokeLinecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <span className="art-note">Illustration d'interface</span>
+      </div>
+    );
+  }
+  if (type === "vestiflow") {
+    return (
+      <div className="project-art project-art-vesti">
+        <div className="vesti-window">
+          <div className="vesti-head"><span><Shirt size={16}/> VestiFlow</span><span className="window-controls">— □ ×</span></div>
+          <div className="vesti-title">Point de vente <span>Nouvelle vente</span></div>
+          <div className="vesti-items">
+            <div className="vesti-product"><span className="vesti-garment garment-one"><Shirt size={23}/></span><i /><i /></div>
+            <div className="vesti-product"><span className="vesti-garment garment-two"><Shirt size={23}/></span><i /><i /></div>
+            <div className="vesti-product"><span className="vesti-garment garment-three"><Shirt size={23}/></span><i /><i /></div>
+          </div>
+          <div className="vesti-bottom"><span>Panier & encaissement</span><strong>Valider la vente <ArrowRight size={14}/></strong></div>
+        </div>
+        <span className="art-note">Illustration d'interface</span>
+      </div>
+    );
+  }
   return (
-    <div className={`section-heading ${centered ? "is-centered" : ""}`}>
-      <span className="eyebrow">
-        <Sparkles size={15} />
-        {eyebrow}
-      </span>
-      <h2>{title}</h2>
-      <p>{text}</p>
+    <div className="project-art project-art-horizon">
+      <div className="horizon-window">
+        <div className="horizon-top"><span className="horizon-brand">HORIZON <b>VISA & IMMO</b></span><span>Accueil &nbsp; Services &nbsp; Contact</span></div>
+        <div className="horizon-content">
+          <span>VOTRE AVENIR, NOTRE HORIZON</span>
+          <strong>Voyagez plus loin.<br/>Imaginez demain.</strong>
+          <div className="horizon-buttons"><i>Découvrir les services</i><i>Nous contacter</i></div>
+        </div>
+        <div className="horizon-globe"><Globe2 size={116} strokeWidth={0.65} /></div>
+      </div>
+      <span className="art-note">Concept visuel illustratif</span>
     </div>
   );
 }
 
-function ThemeSwitch({ isDark, onToggle }) {
+function ProjectCard({ project }) {
+  const isExternal = !!project.url;
+  const href = project.url || "https://wa.me/" + WHATSAPP + "?text=" +
+    encodeURIComponent("Bonjour Nexora Technologies, je souhaite en savoir plus sur " + project.title + ".");
   return (
-    <button
-      type="button"
-      className="theme-switch"
-      onClick={onToggle}
-      aria-label={isDark ? "Passer au mode jour" : "Passer au mode nuit"}
-      aria-pressed={isDark}
-      title={isDark ? "Mode jour" : "Mode nuit"}
-    >
-      <span className="theme-switch-icon theme-switch-sun" aria-hidden="true">
-        <Sun size={15} />
-      </span>
-      <span className="theme-switch-icon theme-switch-moon" aria-hidden="true">
-        <Moon size={15} />
-      </span>
-      <span className="theme-switch-thumb" aria-hidden="true">
-        {isDark ? <Moon size={16} /> : <Sun size={16} />}
-      </span>
-    </button>
+    <article className={"project-card project-" + project.id}>
+      <div className="project-media"><ProjectArtwork type={project.id}/></div>
+      <div className="project-detail">
+        <div className="project-meta"><span>{project.type}</span><span>{project.number} / 03</span></div>
+        <h3>{project.title}</h3>
+        <p>{project.description}</p>
+        <ul>{project.features.map((feature) => <li key={feature}><Check size={15}/>{feature}</li>)}</ul>
+        <div className="project-bottom">
+          <span className="project-status"><span />{project.status}</span>
+          <a className="project-action" href={href} target="_blank" rel="noopener noreferrer" aria-label={project.action + " — " + project.title}>{project.action}{isExternal ? <ExternalLink size={16}/> : <ArrowUpRight size={18}/>}</a>
+        </div>
+      </div>
+    </article>
   );
 }
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [openFaq, setOpenFaq] = useState(0);
-  const [isDark, setIsDark] = useState(() => {
-    const savedTheme = window.localStorage.getItem("nexora-theme");
-    if (savedTheme === "dark") return true;
-    if (savedTheme === "light") return false;
-    return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? false;
+  const [activeFaq, setActiveFaq] = useState(0);
+  const [dark, setDark] = useState(() => {
+    try { return localStorage.getItem("nexora-theme") !== "light"; } catch { return true; }
   });
-
-  const year = useMemo(() => new Date().getFullYear(), []);
-  const closeMenu = () => setMenuOpen(false);
-
   useEffect(() => {
-    window.localStorage.setItem("nexora-theme", isDark ? "dark" : "light");
-    document.documentElement.style.colorScheme = isDark ? "dark" : "light";
-  }, [isDark]);
-
+    try { localStorage.setItem("nexora-theme", dark ? "dark" : "light"); } catch { /* stockage indisponible */ }
+    document.documentElement.style.colorScheme = dark ? "dark" : "light";
+  }, [dark]);
   useEffect(() => {
-    const onKeyDown = (event) => {
-      if (event.key === "Escape") setMenuOpen(false);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    const closeOnEscape = (e) => { if (e.key === "Escape") setMenuOpen(false); };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
-
   useEffect(() => {
-    const media = window.matchMedia("(max-width: 880px)");
-    const syncBody = () => {
-      document.body.style.overflow = menuOpen && media.matches ? "hidden" : "";
-    };
-
-    syncBody();
-    media.addEventListener?.("change", syncBody);
-
-    return () => {
-      document.body.style.overflow = "";
-      media.removeEventListener?.("change", syncBody);
-    };
+    document.body.classList.toggle("menu-locked", menuOpen);
+    return () => document.body.classList.remove("menu-locked");
   }, [menuOpen]);
+  const closeMenu = () => setMenuOpen(false);
+  const year = new Date().getFullYear();
 
-  const submitContact = (event) => {
+  const sendContact = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
-    const body = [
-      "Bonjour Nexora Technologies,",
+    const message = [
+      "Bonjour Nexora Technologies, je souhaite discuter d'un projet.",
       "",
-      `Nom : ${data.get("name") || ""}`,
-      `Entreprise : ${data.get("company") || "Non précisée"}`,
-      `Email : ${data.get("email") || ""}`,
-      `Besoin : ${data.get("service") || ""}`,
+      "Nom : " + (data.get("name") || ""),
+      "Entreprise : " + (data.get("company") || "Non précisée"),
+      "Service : " + (data.get("service") || ""),
+      "Email : " + (data.get("email") || "Non précisé"),
       "",
-      `${data.get("message") || ""}`,
+      String(data.get("message") || ""),
     ].join("\n");
-
-    const whatsappNumber = "22374980744";
-    window.open(
-      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(body)}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
+    window.location.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(message);
   };
 
   return (
-    <div className={`site ${isDark ? "theme-dark" : "theme-light"}`}>
+    <div className={"site " + (dark ? "theme-dark" : "theme-light")}>
+      <a className="skip-link" href="#contenu">Aller au contenu</a>
       <header className="header">
-        <div className="container nav-wrap">
-          <Logo />
-
-          <nav
-            className={`nav ${menuOpen ? "is-open" : ""}`}
-            aria-label="Navigation principale"
-          >
-            {navigation.map(([href, label]) => (
-              <a key={href} href={href} onClick={closeMenu}>
-                {label}
-              </a>
-            ))}
-
-            <a href="#contact" className="nav-cta" onClick={closeMenu}>
-              Parlons de votre projet
-              <ArrowRight size={16} />
-            </a>
+        <div className="container nav-inner">
+          <Brand onClick={closeMenu}/>
+          <nav className={"navigation " + (menuOpen ? "is-open" : "")} id="site-navigation" aria-label="Navigation principale">
+            <a href="#accueil" onClick={closeMenu}>Accueil</a>
+            <a href="#realisations" onClick={closeMenu}>Réalisations</a>
+            <a href="#services" onClick={closeMenu}>Services</a>
+            <a href="#apropos" onClick={closeMenu}>À propos</a>
+            <a className="nav-mobile-contact" href="#contact" onClick={closeMenu}>Contact <ArrowRight size={16}/></a>
           </nav>
-
-          <div className="header-actions">
-            <ThemeSwitch isDark={isDark} onToggle={() => setIsDark((value) => !value)} />
-
-            <button
-              type="button"
-              className="menu-button"
-              aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((value) => !value)}
-            >
-              {menuOpen ? <X /> : <Menu />}
-            </button>
+          <div className="nav-actions">
+            <button className="theme-toggle" type="button" onClick={() => setDark(!dark)} title={dark ? "Activer le mode clair" : "Activer le mode sombre"} aria-label={dark ? "Activer le mode clair" : "Activer le mode sombre"}>{dark ? <Sun size={19}/> : <Moon size={19}/>}</button>
+            <a className="nav-contact" href="#contact">Démarrer un projet <ArrowUpRight size={17}/></a>
+            <button className="mobile-menu" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"} aria-controls="site-navigation" aria-expanded={menuOpen}>{menuOpen ? <X size={24}/> : <Menu size={24}/>}</button>
           </div>
         </div>
       </header>
 
-      <main>
+      <main id="contenu">
         <section className="hero" id="accueil">
-          <div className="hero-grid-bg" aria-hidden="true" />
-          <div className="hero-orb hero-orb-one" aria-hidden="true" />
-          <div className="hero-orb hero-orb-two" aria-hidden="true" />
-
-          <div className="container hero-grid">
+          <div className="hero-grid" aria-hidden="true"/>
+          <div className="container hero-layout">
             <div className="hero-copy">
-              <span className="hero-pill">
-                <span className="pulse-dot" />
-                Software • Innovation • Digital
-              </span>
-
-              <h1>
-                Nous construisons des <span>logiciels qui font avancer</span> les entreprises.
-              </h1>
-
-              <p>
-                Nexora Technologies transforme des besoins métier complexes en produits
-                numériques modernes, sécurisés, rapides et simples à utiliser.
-              </p>
-
-              <div className="hero-actions">
-                <a href="#produits" className="button button-primary">
-                  Découvrir nos solutions
-                  <ArrowRight size={18} />
-                </a>
-                <a href="#contact" className="button button-secondary">
-                  Démarrer un projet
-                </a>
+              <Eyebrow>Studio digital · Bamako, Mali</Eyebrow>
+              <h1>Des idées ambitieuses.<br/><span>Des solutions</span><br/>qui prennent vie.</h1>
+              <p className="hero-description">Nexora Technologies conçoit des sites web et logiciels métier professionnels. Pas seulement des promesses : découvrez des réalisations concrètes, pensées pour les entreprises et les commerces.</p>
+              <div className="hero-ctas">
+                <a className="btn btn-primary" href="#realisations">Explorer nos réalisations <ArrowUpRight size={19}/></a>
+                <a className="btn btn-outline" href="#contact">Discutons de votre projet <ArrowRight size={18}/></a>
               </div>
-
-              <div className="hero-trust">
-                <div><ShieldCheck size={18} /> Architecture sécurisée</div>
-                <div><MonitorSmartphone size={18} /> 100% responsive</div>
-                <div><Zap size={18} /> Expérience rapide</div>
+              <div className="hero-footnotes">
+                <span><BadgeCheck size={17}/> Projets réels</span>
+                <span><ShieldCheck size={17}/> Solutions adaptées</span>
+                <span><MapPin size={17}/> Créé au Mali</span>
               </div>
             </div>
-
-            <div className="hero-visual" aria-label="Aperçu de l’univers Nexora">
-              <div className="visual-glow" />
-
-              <div className="dashboard-shell">
-                <div className="dashboard-top">
-                  <div className="mini-brand">
-                    <span className="mini-mark">N</span>
-                    Nexora OS
-                  </div>
-                  <span className="online-dot">Live</span>
-                </div>
-
-                <div className="dashboard-content">
-                  <aside className="dashboard-side" aria-hidden="true">
-                    <span className="side-item active" />
-                    <span className="side-item" />
-                    <span className="side-item" />
-                    <span className="side-item short" />
-                  </aside>
-
-                  <div className="dashboard-main">
-                    <div className="dash-hero-card">
-                      <span>Smart business software</span>
-                      <strong>Build. Scale. Grow.</strong>
-                    </div>
-
-                    <div className="metric-grid">
-                      <div className="metric-card">
-                        <span className="metric-icon"><PackageSearch size={17} /></span>
-                        <small>Stock</small>
-                        <strong>2,480</strong>
-                      </div>
-                      <div className="metric-card">
-                        <span className="metric-icon violet"><Cpu size={17} /></span>
-                        <small>Automations</small>
-                        <strong>128</strong>
-                      </div>
-                      <div className="metric-card">
-                        <span className="metric-icon cyan"><Globe2 size={17} /></span>
-                        <small>Disponibilité</small>
-                        <strong>24/7</strong>
-                      </div>
-                    </div>
-
-                    <div className="graph-card">
-                      <div className="graph-labels">
-                        <span>Performance</span>
-                        <strong>+38%</strong>
-                      </div>
-                      <svg viewBox="0 0 420 110" role="img" aria-label="Courbe de performance">
-                        <path
-                          d="M4 89 C58 95 64 58 118 67 S178 44 224 51 S290 20 340 29 S382 8 416 14"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="6"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </div>
-                  </div>
+            <div className="hero-showcase" aria-label="Présentation illustrée de nos réalisations">
+              <div className="showcase-halo" aria-hidden="true"/>
+              <div className="showcase-main">
+                <div className="showcase-top"><span><span className="showcase-signal"/> NEXORA / PORTFOLIO</span><span>2026</span></div>
+                <div className="showcase-identity"><img src={BASE + "nexora-symbol.svg"} alt="" width="76" height="76"/><div><small>DESIGN • CODE • IMPACT</small><strong>Le digital, pensé<br/>pour le réel.</strong></div></div>
+                <div className="showcase-list">
+                  <div><span className="showcase-list-icon icon-stock"><Boxes size={20}/></span><span><strong>StockPro Premium</strong><small>SaaS de gestion commerciale</small></span><ArrowUpRight size={17}/></div>
+                  <div><span className="showcase-list-icon icon-vesti"><Shirt size={20}/></span><span><strong>VestiFlow</strong><small>Logiciel de vente textile</small></span><ArrowUpRight size={17}/></div>
+                  <div><span className="showcase-list-icon icon-horizon"><Globe2 size={20}/></span><span><strong>Horizon Visa & Immo</strong><small>Site web professionnel</small></span><ArrowUpRight size={17}/></div>
                 </div>
               </div>
-
-              <div className="floating-card floating-card-one">
-                <span><ShieldCheck size={18} /></span>
-                <div>
-                  <strong>Secure by design</strong>
-                  <small>Contrôle & traçabilité</small>
-                </div>
-              </div>
-
-              <div className="floating-card floating-card-two">
-                <span><Rocket size={18} /></span>
-                <div>
-                  <strong>Ready to scale</strong>
-                  <small>Architecture évolutive</small>
-                </div>
-              </div>
+              <div className="showcase-tag tag-top"><Sparkles size={17}/> Identité digitale</div>
+              <div className="showcase-tag tag-bottom"><span>03</span><small>réalisations<br/>à découvrir</small></div>
             </div>
           </div>
+          <div className="container hero-marquee" aria-label="Nos domaines d'expertise"><span>UNE EXPERTISE CONCRÈTE</span><span>Sites web <i/> Logiciels métier <i/> Applications web <i/> Design d'interfaces</span></div>
+        </section>
 
-          <div className="container logo-strip">
-            <span>Des solutions pensées pour</span>
-            <strong>Commerce</strong>
-            <strong>Éducation</strong>
-            <strong>Santé</strong>
-            <strong>PME</strong>
-            <strong>Services</strong>
+        <section className="section portfolio-section" id="realisations">
+          <div className="container">
+            <div className="section-head portfolio-heading">
+              <div><Eyebrow>Notre portfolio</Eyebrow><h2>Du concret.<br/><span>Pas seulement des concepts.</span></h2></div>
+              <p>Trois projets qui illustrent notre savoir-faire : une plateforme SaaS, un logiciel de bureau et un site web client.</p>
+            </div>
+            <div className="portfolio-grid">{projects.map((project) => <ProjectCard project={project} key={project.id}/>)}</div>
+            <p className="portfolio-caption"><Sparkles size={16}/> Les visuels des projets sont des illustrations de présentation et non des captures d'écran officielles.</p>
           </div>
         </section>
 
         <section className="section services-section" id="services">
           <div className="container">
-            <SectionHeading
-              centered
-              eyebrow="Nos services"
-              title="La technologie utile, du besoin à la mise en production."
-              text="Chaque écran, automatisation et règle métier doit résoudre un vrai problème."
-            />
-
-            <div className="service-grid">
-              {services.map(({ icon: Icon, title, text }, index) => (
-                <article className="service-card" key={title}>
-                  <div className="service-top">
-                    <span className="service-number">0{index + 1}</span>
-                    <span className="service-icon"><Icon size={22} /></span>
-                  </div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                  <span className="service-link">
-                    En savoir plus <ArrowRight size={15} />
-                  </span>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section products-section" id="produits">
-          <div className="container">
-            <div className="products-heading-row">
-              <SectionHeading
-                eyebrow="Produits"
-                title="Un écosystème de logiciels signé Nexora."
-                text="Des produits capables de grandir avec leurs utilisateurs, avec une attention forte portée à la sécurité, au mobile et à la simplicité."
-              />
-
-              <div className="product-heading-badge">
-                <Sparkles size={18} />
-                Nexora Product Lab
-              </div>
-            </div>
-
-            <div className="product-grid">
-              {products.map(({ icon: Icon, badge, title, text, status }, index) => (
-                <article
-                  className={`product-card ${index === 0 ? "featured" : ""}`}
-                  key={title}
-                >
-                  <div className="product-card-head">
-                    <span className="product-icon"><Icon size={28} /></span>
-                    <span className="product-badge">{badge}</span>
-                  </div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                  <div className="product-footer">
-                    <span><CheckCircle2 size={16} /> {status}</span>
-                    <span className="product-arrow" aria-hidden="true"><ArrowRight size={18} /></span>
-                  </div>
+            <div className="section-head"><div><Eyebrow>Nos expertises</Eyebrow><h2>La bonne technologie.<br/><span>Pour vos vrais besoins.</span></h2></div><p>Nous associons conception, développement et sens du détail pour vous donner des outils utiles, beaux et faciles à utiliser.</p></div>
+            <div className="services-grid">
+              {services.map(({ icon: Icon, number, title, description }) => (
+                <article className="service-card" key={number}>
+                  <div className="service-card-top"><span>{number}</span><span className="service-icon"><Icon size={24}/></span></div>
+                  <h3>{title}</h3><p>{description}</p><a href="#contact" aria-label={"Demander un devis : " + title}>Parlons-en <ArrowUpRight size={17}/></a>
                 </article>
               ))}
             </div>
@@ -463,251 +282,64 @@ export default function App() {
 
         <section className="section about-section" id="apropos">
           <div className="container about-grid">
-            <div className="about-copy">
-              <SectionHeading
-                eyebrow="À propos"
-                title="Nexora Technologies, une vision tournée vers des logiciels plus intelligents."
-                text="Nous voulons rendre la technologie professionnelle plus accessible, plus claire et mieux adaptée aux réalités des organisations."
-              />
-
-              <div className="about-points">
-                {[
-                  ["Construire pour durer", "Des fondations propres avant les effets visuels et les fonctionnalités secondaires."],
-                  ["Concevoir d’abord pour l’utilisateur", "Une application doit rester compréhensible même lorsque le métier devient complexe."],
-                  ["Penser mobile dès le premier écran", "Pas de version téléphone bricolée à la fin : le responsive fait partie du produit."],
-                ].map(([title, text]) => (
-                  <div key={title}>
-                    <span><CheckCircle2 /></span>
-                    <div>
-                      <strong>{title}</strong>
-                      <p>{text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <a href="#contact" className="text-button">
-                Construisons quelque chose de solide
-                <ArrowRight size={17} />
-              </a>
+            <div className="about-image-block">
+              <div className="about-image-surface"><img src={BASE + "NEXO.webp"} alt="Univers visuel de Nexora Technologies" loading="lazy"/></div>
+              <div className="about-stamp"><span><img src={BASE + "nexora-symbol.svg"} alt=""/></span><strong>Made with purpose.</strong><small>Créativité & rigueur technique</small></div>
             </div>
-
-            <div className="founder-visual">
-              <span className="shape shape-circle" aria-hidden="true" />
-              <span className="shape shape-square" aria-hidden="true" />
-              <span className="shape shape-dots" aria-hidden="true" />
-
-              <div className="portrait-frame">
-                <img
-                  src={`${import.meta.env.BASE_URL}NEXO.webp`}
-                  alt="Fondateur de Nexora Technologies"
-                  className="portrait-image"
-                  loading="lazy"
-                />
-              </div>
-
-              <div className="founder-card">
-                <small>Founder / Technology</small>
-                <strong>Nexora Technologies</strong>
-                <span>
-                  Une vision : créer des produits numériques propres, utiles, sécurisés et prêts à évoluer.
-                </span>
-              </div>
+            <div className="about-content">
+              <Eyebrow>À propos de Nexora</Eyebrow>
+              <h2>Une passion pour le code. <span>Un engagement pour vos projets.</span></h2>
+              <p>Nexora Technologies est une activité de développement digital basée à Bamako. Notre objectif : rendre les technologies modernes accessibles aux entreprises, avec des solutions qui répondent à leurs usages quotidiens.</p>
+              <p>De StockPro Premium à VestiFlow, nous privilégions une expérience claire, une architecture solide et une identité visuelle soignée.</p>
+              <div className="about-values"><div><Check size={18}/><span>Écoute des besoins métier</span></div><div><Check size={18}/><span>Design responsive et accessible</span></div><div><Check size={18}/><span>Conception et développement soignés</span></div></div>
+              <a className="text-link" href="#contact">Construisons votre solution <ArrowUpRight size={18}/></a>
             </div>
           </div>
         </section>
 
-        <section className="section tech-section">
-          <div className="container tech-panel">
-            <div>
-              <span className="eyebrow eyebrow-dark">
-                <Cpu size={15} />
-                Notre approche
-              </span>
-              <h2>Modernes à l’extérieur. Solides à l’intérieur.</h2>
-              <p>
-                Design premium, architecture claire, données structurées et expérience adaptée
-                aux environnements réels.
-              </p>
-            </div>
-
-            <div className="tech-tags">
-              {["React", "Django", "PostgreSQL", "PWA", "REST", "Security", "Responsive UI", "Automation"].map((tech) => (
-                <span key={tech}>{tech}</span>
-              ))}
-            </div>
+        <section className="section method-section">
+          <div className="container">
+            <div className="section-head"><div><Eyebrow>Notre méthode</Eyebrow><h2>De l'idée à <span>la réalisation.</span></h2></div><p>Un projet réussi commence par la compréhension de votre activité et se construit avec vous, étape par étape.</p></div>
+            <div className="process-grid">{process.map((step) => <div className="process-step" key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.description}</p></div>)}</div>
           </div>
         </section>
 
         <section className="section faq-section" id="faq">
-          <div className="container faq-grid">
-            <div className="faq-intro">
-              <SectionHeading
-                eyebrow="FAQ"
-                title="Les réponses avant même de nous écrire."
-                text="Une question sur nos solutions, notre méthode ou un futur projet ?"
-              />
-
-              <div className="faq-help">
-                <span><MessageCircle /></span>
-                <div>
-                  <strong>Une autre question ?</strong>
-                  <p>Notre espace contact est juste en dessous.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="accordion">
-              {faqs.map((item, index) => {
-                const isOpen = index === openFaq;
-                return (
-                  <article className={`faq-item ${isOpen ? "is-open" : ""}`} key={item.q}>
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaq(isOpen ? -1 : index)}
-                      aria-expanded={isOpen}
-                    >
-                      <span>{item.q}</span>
-                      <ChevronDown size={20} />
-                    </button>
-                    <div className="faq-answer">
-                      <p>{item.a}</p>
-                    </div>
-                  </article>
-                );
-              })}
+          <div className="container faq-layout">
+            <div className="faq-intro"><Eyebrow>Questions fréquentes</Eyebrow><h2>Un projet en tête ?<br/><span>On vous répond.</span></h2><p>Quelques réponses aux questions qui reviennent le plus souvent.</p><a href="#contact" className="text-link">Nous contacter <ArrowUpRight size={18}/></a></div>
+            <div className="faq-list">
+              {questions.map(({ q, a }, index) => <article className={"faq-item " + (activeFaq === index ? "faq-active" : "")} key={q}><button type="button" onClick={() => setActiveFaq(activeFaq === index ? -1 : index)} aria-expanded={activeFaq === index}><span>{q}</span><ChevronDown size={20}/></button>{activeFaq === index && <p>{a}</p>}</article>)}
             </div>
           </div>
         </section>
 
         <section className="section contact-section" id="contact">
-          <div className="contact-orb" aria-hidden="true" />
-
-          <div className="container contact-grid">
-            <div className="contact-copy">
-              <span className="eyebrow eyebrow-dark">
-                <MessageCircle size={15} />
-                Contact
-              </span>
-              <h2>Une idée, un besoin, un projet ? Parlons-en.</h2>
-              <p>
-                Décrivez votre activité et le problème que vous souhaitez résoudre. Nexora pourra
-                ensuite proposer une direction claire.
-              </p>
-
-              <div className="contact-info">
-                <div>
-                  <span><MessageCircle size={19} /></span>
-                  <div>
-                    <small>WhatsApp</small>
-                    <strong>+223 74 98 07 44</strong>
-                  </div>
-                </div>
-                <div>
-                  <span><Rocket size={19} /></span>
-                  <div>
-                    <small>Demandes</small>
-                    <strong>Projet • Démo • Devis</strong>
-                  </div>
-                </div>
-                <div>
-                  <span><Building2 size={19} /></span>
-                  <div>
-                    <small>Zone</small>
-                    <strong>Afrique • International</strong>
-                  </div>
-                </div>
+          <div className="container contact-layout">
+            <div className="contact-copy"><Eyebrow>Créons quelque chose ensemble</Eyebrow><h2>Votre prochain projet <span>commence ici.</span></h2><p>Vous avez besoin d'un site web, d'une application ou d'un logiciel pour votre entreprise ? Parlons de ce que vous souhaitez construire.</p>
+              <div className="contact-links">
+                <a href={"https://wa.me/" + WHATSAPP} target="_blank" rel="noopener noreferrer"><span><MessageCircle size={20}/></span><span><small>WhatsApp</small><strong>+223 74 98 07 44</strong></span><ArrowUpRight size={18}/></a>
+                <a href={"mailto:" + EMAIL}><span><Mail size={20}/></span><span><small>Email</small><strong>{EMAIL}</strong></span><ArrowUpRight size={18}/></a>
+                <div><span><MapPin size={20}/></span><span><small>Localisation</small><strong>Bamako, Mali</strong></span></div>
               </div>
             </div>
-
-            <form className="contact-form" onSubmit={submitContact}>
-              <div className="form-row">
-                <label>
-                  <span>Nom complet</span>
-                  <input name="name" placeholder="Votre nom" required />
-                </label>
-                <label>
-                  <span>Entreprise</span>
-                  <input name="company" placeholder="Nom de l’entreprise" />
-                </label>
-              </div>
-
-              <label>
-                <span>Email</span>
-                <input type="email" name="email" placeholder="vous@entreprise.com" required />
-              </label>
-
-              <label>
-                <span>Service recherché</span>
-                <select name="service" defaultValue="" required>
-                  <option value="" disabled>Choisir un service</option>
-                  <option>Application de gestion</option>
-                  <option>Application web / PWA</option>
-                  <option>Développement sur mesure</option>
-                  <option>Modernisation d’un système</option>
-                  <option>Autre projet</option>
-                </select>
-              </label>
-
-              <label>
-                <span>Votre projet</span>
-                <textarea
-                  name="message"
-                  rows="5"
-                  placeholder="Expliquez brièvement ce que vous souhaitez construire..."
-                  required
-                />
-              </label>
-
-              <button type="submit" className="button button-primary form-submit">
-                Envoyer sur WhatsApp
-                <ArrowRight size={18} />
-              </button>
-
-              <p className="form-note">
-                Cette version statique n’enregistre aucune donnée sur un serveur.
-              </p>
+            <form className="contact-form" onSubmit={sendContact}>
+              <div className="form-heading"><h3>Parlez-nous de votre idée</h3><p>Une demande simple, envoyée directement sur WhatsApp.</p></div>
+              <div className="form-row"><label>Votre nom <input type="text" name="name" placeholder="Nom complet" required maxLength={100}/></label><label>Entreprise <input name="company" placeholder="Facultatif" maxLength={100}/></label></div>
+              <label>Votre email <input type="email" name="email" placeholder="vous@exemple.com" maxLength={150}/></label>
+              <label>Votre besoin <select name="service" required defaultValue=""><option value="" disabled>Sélectionnez un service</option><option>Création de site web</option><option>Application web ou PWA</option><option>Logiciel de gestion</option><option>Développement sur mesure</option><option>Autre</option></select></label>
+              <label>Votre projet <textarea name="message" placeholder="Décrivez votre besoin en quelques phrases..." rows={4} minLength={10} maxLength={2000} required/></label>
+              <button className="btn btn-primary contact-submit" type="submit">Envoyer via WhatsApp <ArrowUpRight size={19}/></button>
+              <small className="privacy-note">Ce formulaire n'enregistre aucune donnée sur notre site. Il prépare un message WhatsApp que vous choisissez d'envoyer.</small>
             </form>
           </div>
         </section>
       </main>
 
       <footer className="footer">
-        <div className="container footer-grid">
-          <div className="footer-brand">
-            <Logo />
-            <p>Des logiciels modernes pour construire des organisations plus efficaces.</p>
-          </div>
-
-          <div className="footer-links">
-            <div>
-              <strong>Navigation</strong>
-              <a href="#services">Services</a>
-              <a href="#produits">Produits</a>
-              <a href="#apropos">À propos</a>
-            </div>
-            <div>
-              <strong>Ressources</strong>
-              <a href="#faq">FAQ</a>
-              <a href="#contact">Contact</a>
-              <a href="#accueil">Retour en haut</a>
-            </div>
-          </div>
-
-          <div className="footer-social">
-            <strong>Suivez Nexora</strong>
-            <div>
-              <a href="#!" aria-label="GitHub"><Github /></a>
-              <a href="#contact" aria-label="Contact"><Globe2 /></a>
-            </div>
-          </div>
-        </div>
-
-        <div className="container footer-bottom">
-          <span>© {year} Nexora Technologies. Tous droits réservés.</span>
-          <span>Built for the next generation.</span>
-        </div>
+        <div className="container footer-top"><div><Brand/><p>Sites web, applications et logiciels de gestion. La technologie au service de vos ambitions.</p></div><div className="footer-column"><strong>Explorer</strong><a href="#realisations">Réalisations</a><a href="#services">Services</a><a href="#apropos">À propos</a><a href="#faq">FAQ</a></div><div className="footer-column"><strong>Nous retrouver</strong><a href="https://stockpro.ml/" target="_blank" rel="noopener noreferrer">StockPro Premium <ExternalLink size={13}/></a><a href="https://github.com/hamapixel" target="_blank" rel="noopener noreferrer">GitHub <Github size={14}/></a><a href={"mailto:" + EMAIL}>Email <Mail size={14}/></a></div></div>
+        <div className="container footer-bottom"><span>© {year} Nexora Technologies. Tous droits réservés.</span><span>Conçu avec passion à Bamako, Mali.</span></div>
       </footer>
+      <a className="floating-whatsapp" href={"https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Bonjour Nexora Technologies, j'aimerais discuter d'un projet.")} target="_blank" rel="noopener noreferrer" aria-label="Contacter Nexora Technologies sur WhatsApp"><MessageCircle size={23}/></a>
     </div>
   );
 }
