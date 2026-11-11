@@ -444,7 +444,7 @@ img { display: block; }
 .project-card:hover { border-color: rgba(149,85,230,.55); }
 .project-detail li svg, .service-icon, .service-card > a { color: var(--accent); }
 .about-image-surface { height: 540px; background: linear-gradient(145deg,#e9e8ef,#b6bad4); }
-.about-image-surface img { width: 100%; height: 100%; object-fit: contain; object-position: center top; }
+.about-image-surface img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .about-stamp { bottom: -5px; }
 .about-stamp img { width: 46px; height: 46px; object-fit: contain; background: #0b0718; border-radius: 9px; }
 .contact-section { background: radial-gradient(ellipse at 0% 100%,rgba(102,46,158,.14),transparent 58%),var(--bg-2); }
