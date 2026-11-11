@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Showroom3D from "./Showroom3D";
 import {
   ArrowRight, ArrowUpRight, BadgeCheck, Boxes, Check, ChevronDown, Code2,
   Database, ExternalLink, Globe2, Github, Laptop, Layers3, Mail, MapPin,
@@ -61,15 +62,14 @@ const process = [
 const questions = [
   { q: "Quels types de projets réalisez-vous ?", a: "Nous réalisons des sites web professionnels, applications web, PWA et logiciels de gestion adaptés aux besoins des entreprises et des commerces." },
   { q: "StockPro Premium est-il accessible en ligne ?", a: "Oui. Vous pouvez découvrir la plateforme sur stockpro.ml. Les fonctionnalités et formules disponibles sont présentées sur son site officiel." },
-  { q: "Peut-on demander une démonstration de VestiFlow ?", a: "Oui. Contactez Nexora par WhatsApp pour discuter du logiciel Windows et organiser une présentation." },
+  { q: "Peut-on demander une démonstration de VestiFlow ?", a: "Oui. Contactez BTDIGIT par WhatsApp pour discuter du logiciel Windows et organiser une présentation." },
   { q: "Comment obtenir un devis pour mon entreprise ?", a: "Présentez votre projet dans le formulaire de contact. Votre demande est préparée pour WhatsApp, sans enregistrement sur ce site vitrine." },
 ];
 
 function Brand({ onClick }) {
   return (
-    <a className="brand" href="#accueil" onClick={onClick} aria-label="Nexora Technologies, retour à l'accueil">
-      <img className="brand-symbol" src={BASE + "nexora-symbol.svg"} alt="" width="46" height="46" />
-      <span className="brand-words"><strong>NEXORA</strong><small>TECHNOLOGIES</small></span>
+    <a className="brand" href="#accueil" onClick={onClick} aria-label="BTDIGIT, retour à l'accueil">
+      <img className="brand-logo" src={BASE + "btdigit-logo.webp"} alt="BTDIGIT — Agence Digitale" width="205" height="74" />
     </a>
   );
 }
@@ -142,7 +142,7 @@ function ProjectArtwork({ type }) {
 function ProjectCard({ project }) {
   const isExternal = !!project.url;
   const href = project.url || "https://wa.me/" + WHATSAPP + "?text=" +
-    encodeURIComponent("Bonjour Nexora Technologies, je souhaite en savoir plus sur " + project.title + ".");
+    encodeURIComponent("Bonjour BTDIGIT, je souhaite en savoir plus sur " + project.title + ".");
   return (
     <article className={"project-card project-" + project.id}>
       <div className="project-media"><ProjectArtwork type={project.id}/></div>
@@ -186,7 +186,7 @@ export default function App() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const message = [
-      "Bonjour Nexora Technologies, je souhaite discuter d'un projet.",
+      "Bonjour BTDIGIT, je souhaite discuter d'un projet.",
       "",
       "Nom : " + (data.get("name") || ""),
       "Entreprise : " + (data.get("company") || "Non précisée"),
@@ -206,7 +206,8 @@ export default function App() {
           <Brand onClick={closeMenu}/>
           <nav className={"navigation " + (menuOpen ? "is-open" : "")} id="site-navigation" aria-label="Navigation principale">
             <a href="#accueil" onClick={closeMenu}>Accueil</a>
-            <a href="#realisations" onClick={closeMenu}>Réalisations</a>
+            <a href="#realisations" onClick={closeMenu}>Portfolio</a>
+            <a href="#studio3d" onClick={closeMenu}>Studio 3D</a>
             <a href="#services" onClick={closeMenu}>Services</a>
             <a href="#apropos" onClick={closeMenu}>À propos</a>
             <a className="nav-mobile-contact" href="#contact" onClick={closeMenu}>Contact <ArrowRight size={16}/></a>
@@ -224,31 +225,31 @@ export default function App() {
           <div className="hero-grid" aria-hidden="true"/>
           <div className="container hero-layout">
             <div className="hero-copy">
-              <Eyebrow>Studio digital · Bamako, Mali</Eyebrow>
+              <Eyebrow>BTDIGIT · Agence digitale · Bamako</Eyebrow>
               <h1>Des idées ambitieuses.<br/><span>Des solutions</span><br/>qui prennent vie.</h1>
-              <p className="hero-description">Nexora Technologies conçoit des sites web et logiciels métier professionnels. Pas seulement des promesses : découvrez des réalisations concrètes, pensées pour les entreprises et les commerces.</p>
+              <p className="hero-description">BTDIGIT est une agence de solutions digitales fondée à Bamako. Nous imaginons des sites web, des logiciels métier et des expériences interactives pour transformer les idées en projets concrets.</p>
               <div className="hero-ctas">
-                <a className="btn btn-primary" href="#realisations">Explorer nos réalisations <ArrowUpRight size={19}/></a>
+                <a className="btn btn-primary" href="#realisations">Voir le portfolio <ArrowUpRight size={19}/></a>
                 <a className="btn btn-outline" href="#contact">Discutons de votre projet <ArrowRight size={18}/></a>
               </div>
               <div className="hero-footnotes">
-                <span><BadgeCheck size={17}/> Projets réels</span>
+                <span><BadgeCheck size={17}/> Portfolio réel</span>
                 <span><ShieldCheck size={17}/> Solutions adaptées</span>
-                <span><MapPin size={17}/> Créé au Mali</span>
+                <span><MapPin size={17}/> Agence malienne</span>
               </div>
             </div>
             <div className="hero-showcase" aria-label="Présentation illustrée de nos réalisations">
               <div className="showcase-halo" aria-hidden="true"/>
               <div className="showcase-main">
-                <div className="showcase-top"><span><span className="showcase-signal"/> NEXORA / PORTFOLIO</span><span>2026</span></div>
-                <div className="showcase-identity"><img src={BASE + "nexora-symbol.svg"} alt="" width="76" height="76"/><div><small>DESIGN • CODE • IMPACT</small><strong>Le digital, pensé<br/>pour le réel.</strong></div></div>
+                <div className="showcase-top"><span><span className="showcase-signal"/> BTDIGIT / PORTFOLIO</span><span>2026</span></div>
+                <div className="showcase-identity"><img src={BASE + "btdigit-logo.webp"} alt="Logo BTDIGIT" width="190" height="70"/><div><small>AGENCE DIGITALE • MALI</small><strong>Du concept<br/>à l'expérience.</strong></div></div>
                 <div className="showcase-list">
                   <div><span className="showcase-list-icon icon-stock"><Boxes size={20}/></span><span><strong>StockPro Premium</strong><small>SaaS de gestion commerciale</small></span><ArrowUpRight size={17}/></div>
                   <div><span className="showcase-list-icon icon-vesti"><Shirt size={20}/></span><span><strong>VestiFlow</strong><small>Logiciel de vente textile</small></span><ArrowUpRight size={17}/></div>
                   <div><span className="showcase-list-icon icon-horizon"><Globe2 size={20}/></span><span><strong>Horizon Visa & Immo</strong><small>Site web professionnel</small></span><ArrowUpRight size={17}/></div>
                 </div>
               </div>
-              <div className="showcase-tag tag-top"><Sparkles size={17}/> Identité digitale</div>
+              <div className="showcase-tag tag-top"><Sparkles size={17}/> Identité BTDIGIT</div>
               <div className="showcase-tag tag-bottom"><span>03</span><small>réalisations<br/>à découvrir</small></div>
             </div>
           </div>
@@ -258,13 +259,15 @@ export default function App() {
         <section className="section portfolio-section" id="realisations">
           <div className="container">
             <div className="section-head portfolio-heading">
-              <div><Eyebrow>Notre portfolio</Eyebrow><h2>Du concret.<br/><span>Pas seulement des concepts.</span></h2></div>
-              <p>Trois projets qui illustrent notre savoir-faire : une plateforme SaaS, un logiciel de bureau et un site web client.</p>
+              <div><Eyebrow>Portfolio</Eyebrow><h2>Du concret.<br/><span>Pas seulement des concepts.</span></h2></div>
+              <p>Des réalisations concrètes : une plateforme SaaS, un logiciel de bureau et un site web conçu pour un client.</p>
             </div>
             <div className="portfolio-grid">{projects.map((project) => <ProjectCard project={project} key={project.id}/>)}</div>
             <p className="portfolio-caption"><Sparkles size={16}/> Les visuels des projets sont des illustrations de présentation et non des captures d'écran officielles.</p>
           </div>
         </section>
+
+        <Showroom3D />
 
         <section className="section services-section" id="services">
           <div className="container">
@@ -283,14 +286,14 @@ export default function App() {
         <section className="section about-section" id="apropos">
           <div className="container about-grid">
             <div className="about-image-block">
-              <div className="about-image-surface"><img src={BASE + "NEXO.webp"} alt="Univers visuel de Nexora Technologies" loading="lazy"/></div>
-              <div className="about-stamp"><span><img src={BASE + "nexora-symbol.svg"} alt=""/></span><strong>Made with purpose.</strong><small>Créativité & rigueur technique</small></div>
+              <div className="about-image-surface"><img src={BASE + "NEXO.webp"} alt="Portrait du fondateur de BTDIGIT" loading="lazy"/></div>
+              <div className="about-stamp"><span><img src={BASE + "btdigit-icon.svg"} alt=""/></span><strong>Fondateur de BTDIGIT</strong><small>Développement & innovation</small></div>
             </div>
             <div className="about-content">
-              <Eyebrow>À propos de Nexora</Eyebrow>
-              <h2>Une passion pour le code. <span>Un engagement pour vos projets.</span></h2>
-              <p>Nexora Technologies est une activité de développement digital basée à Bamako. Notre objectif : rendre les technologies modernes accessibles aux entreprises, avec des solutions qui répondent à leurs usages quotidiens.</p>
-              <p>De StockPro Premium à VestiFlow, nous privilégions une expérience claire, une architecture solide et une identité visuelle soignée.</p>
+              <Eyebrow>Le fondateur de BTDIGIT</Eyebrow>
+              <h2>Une passion pour le code. <span>Une agence tournée vers vos ambitions.</span></h2>
+              <p>BTDIGIT est une agence de solutions digitales fondée par un développeur web à Bamako. Je conçois des applications, logiciels et sites professionnels avec un objectif simple : transformer les besoins des entreprises en expériences utiles, fiables et élégantes.</p>
+              <p>StockPro Premium, VestiFlow et Horizon Visa & Immo composent un portfolio qui reflète cette démarche : concevoir des produits concrets, et pas seulement de belles maquettes.</p>
               <div className="about-values"><div><Check size={18}/><span>Écoute des besoins métier</span></div><div><Check size={18}/><span>Design responsive et accessible</span></div><div><Check size={18}/><span>Conception et développement soignés</span></div></div>
               <a className="text-link" href="#contact">Construisons votre solution <ArrowUpRight size={18}/></a>
             </div>
@@ -336,10 +339,10 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <div className="container footer-top"><div><Brand/><p>Sites web, applications et logiciels de gestion. La technologie au service de vos ambitions.</p></div><div className="footer-column"><strong>Explorer</strong><a href="#realisations">Réalisations</a><a href="#services">Services</a><a href="#apropos">À propos</a><a href="#faq">FAQ</a></div><div className="footer-column"><strong>Nous retrouver</strong><a href="https://stockpro.ml/" target="_blank" rel="noopener noreferrer">StockPro Premium <ExternalLink size={13}/></a><a href="https://github.com/hamapixel" target="_blank" rel="noopener noreferrer">GitHub <Github size={14}/></a><a href={"mailto:" + EMAIL}>Email <Mail size={14}/></a></div></div>
-        <div className="container footer-bottom"><span>© {year} Nexora Technologies. Tous droits réservés.</span><span>Conçu avec passion à Bamako, Mali.</span></div>
+        <div className="container footer-top"><div><Brand/><p>Sites web, applications et logiciels de gestion. La technologie au service de vos ambitions.</p></div><div className="footer-column"><strong>Explorer</strong><a href="#realisations">Portfolio</a><a href="#studio3d">Studio 3D</a><a href="#services">Services</a><a href="#apropos">À propos</a><a href="#faq">FAQ</a></div><div className="footer-column"><strong>Nous retrouver</strong><a href="https://stockpro.ml/" target="_blank" rel="noopener noreferrer">StockPro Premium <ExternalLink size={13}/></a><a href="https://github.com/hamapixel" target="_blank" rel="noopener noreferrer">GitHub <Github size={14}/></a><a href={"mailto:" + EMAIL}>Email <Mail size={14}/></a></div></div>
+        <div className="container footer-bottom"><span>© {year} BTDIGIT. Tous droits réservés.</span><span>Conçu avec passion à Bamako, Mali.</span></div>
       </footer>
-      <a className="floating-whatsapp" href={"https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Bonjour Nexora Technologies, j'aimerais discuter d'un projet.")} target="_blank" rel="noopener noreferrer" aria-label="Contacter Nexora Technologies sur WhatsApp"><MessageCircle size={23}/></a>
+      <a className="floating-whatsapp" href={"https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Bonjour BTDIGIT, j'aimerais discuter d'un projet.")} target="_blank" rel="noopener noreferrer" aria-label="Contacter BTDIGIT sur WhatsApp"><MessageCircle size={23}/></a>
     </div>
   );
 }
