@@ -13,33 +13,33 @@ Les visuels intégrés aux cartes sont des **illustrations de présentation**, e
 ## Identité visuelle
 
 Trois fichiers SVG originaux et modifiables sont inclus :
-- \`public/nexora-symbol.svg\` : monogramme N digital et favicon.
-- \`public/nexora-logo.svg\` : logo horizontal pour fond sombre.
-- \`public/nexora-logo-light.svg\` : logo horizontal pour fond clair.
+- `public/nexora-symbol.svg` : monogramme N digital et favicon.
+- `public/nexora-logo.svg` : logo horizontal pour fond sombre.
+- `public/nexora-logo-light.svg` : logo horizontal pour fond clair.
 
 ## Développement
 
 Stack : React 18, Vite 6, Lucide React et CSS responsive.
 
-\`\`\`bash
+```bash
 npm ci
 npm run dev
-\`\`\`
+```
 
 Construire et vérifier la version de production :
 
-\`\`\`bash
+```bash
 npm run build
 npm run preview
-\`\`\`
+```
 
 ## Publication
 
-Le site est publié via GitHub Pages. Le workflow \`.github/workflows/deploy.yml\` reconstruit et déploie automatiquement à chaque push sur \`main\`. Le workflow \`ci.yml\` contrôle le build des pull requests.
+Le site est publié via GitHub Pages. Le workflow `.github/workflows/deploy.yml` reconstruit et déploie automatiquement à chaque push sur `main`. Le workflow `ci.yml` contrôle le build des pull requests.
 
 URL publique : https://hamapixel.github.io/nexora-technologies/
 
-La base Vite \`./\` de \`vite.config.js\` est nécessaire pour les chemins des fichiers sous le sous-répertoire GitHub Pages.
+La base Vite `./` de `vite.config.js` est nécessaire pour les chemins des fichiers sous le sous-répertoire GitHub Pages.
 
 ## Contact
 
