@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+<title id="title">BTDIGIT — agence digitale</title>
+<defs><linearGradient id="orbit" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#7524dc"/><stop offset="1" stop-color="#b256ff"/></linearGradient></defs>
+<rect width="128" height="128" rx="26" fill="#080615"/>
+<ellipse cx="64" cy="65" rx="54" ry="25" transform="rotate(-34 64 65)" fill="none" stroke="url(#orbit)" stroke-width="9"/>
+<path d="M25 92V36H49Q69 36 69 51Q69 62 59 65Q74 67 74 79Q74 93 49 92Z" fill="#fff"/>
+<path d="M38 47V59H49Q57 59 57 53Q57 47 48 47ZM38 69V81H49Q61 81 61 75Q61 69 49 69Z" fill="#080615"/>
+<path d="M73 37H114L110 49H97L88 92H75L84 49H70Z" fill="#fff"/>
+</svg>
