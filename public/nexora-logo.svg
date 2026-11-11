@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="210" viewBox="0 0 900 210" role="img" aria-labelledby="title desc">
+<title id="title">Nexora Technologies — logo horizontal</title>
+<desc id="desc">Monogramme N digital bleu turquoise associé au nom Nexora Technologies.</desc>
+<defs>
+<linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#12334b"/><stop offset="1" stop-color="#081622"/></linearGradient>
+<linearGradient id="n" x1="0" x2="1" y1="1" y2="0"><stop stop-color="#51dbe4"/><stop offset=".48" stop-color="#75b9fb"/><stop offset="1" stop-color="#97eff2"/></linearGradient>
+</defs>
+<g transform="translate(16 17) scale(1.37)">
+<rect x="3" y="3" width="122" height="122" rx="30" fill="url(#bg)" stroke="#31657b" stroke-opacity=".65" stroke-width="2"/>
+<path d="M31 88V39L83 88V39" stroke="url(#n)" stroke-width="12" stroke-linecap="square" stroke-linejoin="round" fill="none"/>
+<path d="M86 29V22H101" stroke="#75cddd" stroke-width="3" stroke-linecap="round" fill="none" opacity=".85"/>
+<circle cx="102" cy="22" r="5" fill="#ffb66e"/>
+<path d="M23 94H33M88 95V103H100" stroke="#63c1d9" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".75"/>
+<circle cx="101" cy="103" r="3.5" fill="#6fe0e8"/>
+</g>
+<text x="225" y="112" font-family="Arial, Helvetica, sans-serif" font-size="83" letter-spacing="8" font-weight="800" fill="#f6fbff">NEXORA</text>
+<text x="231" y="154" font-family="Arial, Helvetica, sans-serif" font-size="23" letter-spacing="13" font-weight="700" fill="#91b3c7">TECHNOLOGIES</text>
+<path d="M228 172H731" stroke="#44768a" stroke-width="2" opacity=".45"/>
+<circle cx="744" cy="172" r="4" fill="#ffb66e"/>
+</svg>
