@@ -1,12 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowUpRight, Headset, Mail, MessageCircle, Phone, ShieldCheck, X } from "lucide-react";
 
 const WHATSAPP = "22374980744";
 const EMAIL = "hamaatraore@gmail.com";
 
 /** Accessible support popup. No invented help-center URL: its button opens our real FAQ. */
-export default function SupportModal({ t }) {
-  const [open, setOpen] = useState(false);
+export default function SupportModal({ t, open, setOpen }) {
   const dialog = useRef(null);
   const trigger = useRef(null);
 
