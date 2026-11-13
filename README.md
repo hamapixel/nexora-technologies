@@ -17,6 +17,38 @@ Le changement de langue s'applique immédiatement, sans rechargement de page, et
 
 **Qualité linguistique :** la version bambara est une première adaptation complète proposée en alphabet latin. Une relecture par un locuteur natif / traducteur spécialisé est recommandée avant d'utiliser ces formulations dans des engagements commerciaux. Les noms de marques et termes techniques courants (SaaS, PWA, WhatsApp) sont conservés.
 
+## Animations au défilement — GSAP, ScrollTrigger et Three.js
+
+Le site utilise maintenant **GSAP + ScrollTrigger 3.15.1** pour un défilement animé mais naturel :
+
+- Apparition des titres, cartes de services, projets du portfolio, fondateur, étapes, FAQ et contact.
+- Effets de parallaxe légers sur les rubans abstraits et la carte du portfolio.
+- Barre discrète de progression de lecture, liée au défilement.
+- Effets plus légers sur mobile, désactivés si l'utilisateur préfère les animations réduites.
+- Nettoyage des animations lors des changements de langue, du démontage React et des changements de préférences d'accessibilité.
+
+Un accent visuel abstrait basé sur **Three.js 0.187.0** est présent en arrière-plan de l'accueil, uniquement sur ordinateurs compatibles. Sa rotation suit la progression du défilement. Il **ne s'agit pas d'un véhicule**, ni d'un nouveau showroom automobile.
+
+Pour préserver les performances, cette scène n'est pas chargée sur petit écran, lorsque le mode économie de données est activé, sur des appareils à mémoire limitée ou si l'utilisateur a demandé une réduction des animations. Elle ne fait pas tourner un rendu 60 images/seconde en continu. Le fond SVG demeure visible comme alternative.
+
+Les deux bibliothèques sont chargées depuis des URLs **CDN versionnées** (voir `index.html` et `src/ThreeAccent.jsx`). En l'absence d'accès au CDN, le site et ses fonctions restent accessibles, avec le fond CSS statique.
+
+### Vérifications locales
+
+```powershell
+cd "$env:USERPROFILE\Desktop\BTDIGIT"
+git status
+git switch main
+git pull --ff-only origin main
+npm ci
+npm run test:i18n
+npm run test:motion
+npm run build
+npm run dev
+```
+
+En cas de modifications locales non enregistrées, ne pas forcer le `git pull` : sauvegarder ou committer ces changements avant la synchronisation.
+
 ## Identité et portfolio
 
 - Logo officiel BTDIGIT blanc et violet : `public/btdigit-logo.webp`.
