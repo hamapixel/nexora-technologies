@@ -91,6 +91,35 @@ Le workflow `.github/workflows/ci.yml` valide les quatre langues et la compilati
 
 Site : https://hamapixel.github.io/nexora-technologies/
 
+## Nouveautés BTDIGIT : secteurs, partenaires et support
+
+- **Carrousel automatique « Votre secteur, votre présence digitale »** : 4 étapes dédiées au BTP, à l'hôtellerie/restauration, au transport/logistique et au commerce général. Chaque fiche présente un bénéfice concret et dirige vers le formulaire.
+- **Carrousel de partenaires** : MSF-SARL et Horizon Visa & Immo, avec les logos fournis et optimisés au format WebP dans `public/partners/`. Le lien Horizon renvoie vers https://horizon-immo-services.com/. Aucun site imaginaire n'est attribué à MSF-SARL.
+- **Fenêtre de support premium** (bouton flottant et accès dans le pied de page) : appel au +223 74 98 07 44, WhatsApp, email, accès aux questions fréquentes et rappel de sécurité.
+- **Lien GitHub supprimé du pied de page**.
+- Les deux carrousels défilent automatiquement lorsqu'ils sont visibles. Ils s'arrêtent au survol, à la prise de focus, lorsque l'onglet est masqué, ou si l'utilisateur préfère limiter les animations. Les flèches et les points de navigation restent utilisables.
+- Les nouveaux textes sont traduits en français, anglais, bambara et espagnol. La traduction bambara reste à faire relire par un locuteur natif.
+- GSAP ScrollTrigger anime légèrement l'arrivée des deux sections sans affecter la navigation sticky.
+
+### Mise à jour locale Windows
+
+Si `BTDIGIT` existe déjà sur le Bureau Windows :
+
+```powershell
+cd "$env:USERPROFILE\Desktop\BTDIGIT"
+git status
+git switch main
+git pull --ff-only origin main
+npm ci
+npm run test:i18n
+npm run test:motion
+npm run test:agency
+npm run build
+npm run dev
+```
+
+Si `git status` signale des fichiers modifiés, les sauvegarder avant la synchronisation. Ne pas les écraser avec un reset forcé.
+
 ## Contact
 
 - WhatsApp : +223 74 98 07 44

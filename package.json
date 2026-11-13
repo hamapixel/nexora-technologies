@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:i18n": "node --test tests/i18n.test.mjs",
-    "test:motion": "node --test tests/motion.test.mjs"
+    "test:motion": "node --test tests/motion.test.mjs",
+    "test:agency": "node --test tests/agency.test.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

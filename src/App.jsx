@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight, ArrowUpRight, BadgeCheck, Boxes, Check, ChevronDown, Code2,
-  Database, ExternalLink, Globe2, Github, Mail, MapPin, Menu, MessageCircle,
+  Database, ExternalLink, Globe2, Mail, MapPin, Menu, MessageCircle,
   MonitorSmartphone, Moon, ShieldCheck, Shirt, Sparkles, Sun, Workflow, X,
 } from "lucide-react";
 import { LANGUAGES, getTranslation } from "./i18n";
 import { ProjectCard } from "./ProjectArtwork";
 import ThreeAccent from "./ThreeAccent";
+import { IndustriesSection, PartnersSection } from "./BusinessSections";
+import SupportModal from "./SupportModal";
 import { setupScrollAnimations } from "./scrollMotion";
 
 const BASE = import.meta.env.BASE_URL;
@@ -17,7 +19,7 @@ const THEME_KEY = "btdigit-theme";
 const PROJECTS = [
   { id: "stockpro", title: "StockPro Premium", url: "https://stockpro.ml/" },
   { id: "vestiflow", title: "VestiFlow", url: null },
-  { id: "horizon", title: "Horizon Visa & Immo", url: null },
+  { id: "horizon", title: "Horizon Visa & Immo", url: "https://horizon-immo-services.com/" },
 ];
 const serviceIcons = [Code2, MonitorSmartphone, Database, Workflow];
 const heroIcons = [Boxes, Shirt, Globe2];
@@ -97,6 +99,7 @@ export default function App() {
   const [language, setLanguage] = useState(getInitialLanguage);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState(0);
+  const [supportOpen, setSupportOpen] = useState(false);
   const [dark, setDark] = useState(() => {
     try {
       const current = localStorage.getItem(THEME_KEY) || localStorage.getItem("nexora-theme");
@@ -177,6 +180,7 @@ export default function App() {
             <a href="#realisations" onClick={closeMenu}>{t.common.portfolio}</a>
             <a href="#services" onClick={closeMenu}>{t.common.services}</a>
             <a href="#apropos" onClick={closeMenu}>{t.common.about}</a>
+            <a href="#partenaires" onClick={closeMenu}>{t.partners.nav}</a>
             <a className="nav-mobile-contact" href="#contact" onClick={closeMenu}>{t.common.contact} <ArrowRight size={16}/></a>
           </nav>
           <div className="nav-actions">
@@ -268,6 +272,8 @@ export default function App() {
           </div>
         </section>
 
+        <IndustriesSection t={t}/>
+
         <section className="section portfolio-section" id="realisations">
           <div className="container">
             <div className="section-head portfolio-heading">
@@ -278,6 +284,8 @@ export default function App() {
             <p className="portfolio-caption"><Sparkles size={16}/>{t.portfolio.note}</p>
           </div>
         </section>
+
+        <PartnersSection t={t}/>
 
         <section className="agency-banner" aria-label={t.banner.aria}>
           <div className="banner-ribbon" aria-hidden="true"/>
@@ -392,7 +400,8 @@ export default function App() {
           <div className="footer-column">
             <strong>{t.footer.find}</strong>
             <a href="https://stockpro.ml/" target="_blank" rel="noopener noreferrer">StockPro Premium <ExternalLink size={13}/></a>
-            <a href="https://github.com/hamapixel" target="_blank" rel="noopener noreferrer">GitHub <Github size={14}/></a>
+            <a href="#partenaires">{t.partners.nav}</a>
+            <button type="button" className="footer-support-link" onClick={() => setSupportOpen(true)}>{t.support.trigger} <MessageCircle size={14}/></button>
             <a href={"mailto:" + EMAIL}>{t.common.email} <Mail size={14}/></a>
           </div>
         </div>
@@ -400,10 +409,7 @@ export default function App() {
           <span>© {year} BTDIGIT. {t.footer.rights}</span><span>{t.footer.signature}</span>
         </div>
       </footer>
-      <a className="floating-whatsapp" href={"https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(t.contact.whatsappIntro)}
-        target="_blank" rel="noopener noreferrer" aria-label={t.common.contactUs + " — WhatsApp"}>
-        <MessageCircle size={23}/>
-      </a>
+      <SupportModal t={t} open={supportOpen} setOpen={setSupportOpen}/>
     </div>
   );
 }

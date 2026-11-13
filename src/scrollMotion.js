@@ -48,7 +48,8 @@ export function setupScrollAnimations() {
         });
       };
 
-      reveal(".services-section .section-head, .portfolio-section .section-head, .method-section .section-head");
+      reveal(".services-section .section-head, .portfolio-section .section-head, .method-section .section-head, .industries-section .section-head, .partners-section .section-head");
+      reveal(".industries-section .auto-carousel, .partners-section .auto-carousel", { y: desktop ? 35 : 12 });
       reveal(".services-grid .service-card", { y: desktop ? 38 : 12, duration: desktop ? 0.8 : 0.53 });
       reveal(".portfolio-grid .project-card", { y: desktop ? 48 : 16, duration: desktop ? 0.9 : 0.58 });
       reveal(".about-section .about-content", { y: desktop ? 32 : 14 });
