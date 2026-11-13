@@ -55,3 +55,14 @@ test("contact and portfolio data are complete in all four languages", () => {
     assert.equal(data.contact.formFields.length, 4);
   }
 });
+
+
+test("founder name and digital passion are present in every language", () => {
+  for (const { code } of LANGUAGES) {
+    const about = translations[code].about;
+    assert.equal(about.name, "Hama A Traoré", code + " founder name");
+    assert.ok(about.tagline.length > 15, code + " tagline");
+    assert.ok(about.intro.includes("BTDIGIT"), code + " founder agency story");
+    assert.ok(about.intro2.includes("StockPro Premium"), code + " real work");
+  }
+});
