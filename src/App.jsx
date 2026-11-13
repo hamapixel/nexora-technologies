@@ -305,7 +305,8 @@ export default function App() {
             </div>
             <div className="about-content">
               <Eyebrow>{t.about.eyebrow}</Eyebrow>
-              <h2>{t.about.title1} <span>{t.about.title2}</span></h2>
+              <h2 className="founder-name">{t.about.name}</h2>
+              <p className="founder-tagline">{t.about.tagline}</p>
               <p>{t.about.intro}</p>
               <p>{t.about.intro2}</p>
               <div className="about-values">
