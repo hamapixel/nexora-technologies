@@ -19,7 +19,7 @@ const THEME_KEY = "btdigit-theme";
 const PROJECTS = [
   { id: "stockpro", title: "StockPro Premium", url: "https://stockpro.ml/" },
   { id: "vestiflow", title: "VestiFlow", url: null },
-  { id: "horizon", title: "Horizon Visa & Immo", url: null },
+  { id: "horizon", title: "Horizon Visa & Immo", url: "https://horizon-immo-services.com/" },
 ];
 const serviceIcons = [Code2, MonitorSmartphone, Database, Workflow];
 const heroIcons = [Boxes, Shirt, Globe2];
