@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
  */
 export default function AutoCarousel({
   items, renderSlide, label, interval = 5200, carouselId = "slider",
+  previousLabel = "Previous", nextLabel = "Next",
 }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -65,7 +66,7 @@ export default function AutoCarousel({
             <div key={item.id || itemIndex} className="auto-carousel__slide"
               aria-roledescription="slide" aria-label={(itemIndex + 1) + " / " + length}
               aria-hidden={itemIndex !== activeIndex}
-              inert={itemIndex !== activeIndex ? true : undefined}>
+              inert={itemIndex !== activeIndex ? "" : undefined}>
               {renderSlide(item, itemIndex)}
             </div>
           ))}
@@ -81,8 +82,8 @@ export default function AutoCarousel({
             ))}
           </div>
           <div className="auto-carousel__arrows">
-            <button type="button" onClick={() => move(-1)} aria-label={carouselId + " : précédent"}><ArrowLeft size={19}/></button>
-            <button type="button" onClick={() => move(1)} aria-label={carouselId + " : suivant"}><ArrowRight size={19}/></button>
+            <button type="button" onClick={() => move(-1)} aria-label={carouselId + " — " + previousLabel}><ArrowLeft size={19}/></button>
+            <button type="button" onClick={() => move(1)} aria-label={carouselId + " — " + nextLabel}><ArrowRight size={19}/></button>
           </div>
         </div>
       )}
