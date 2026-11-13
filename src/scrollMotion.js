@@ -100,7 +100,11 @@ export function setupScrollAnimations() {
 
     hasEnhancedMotion = true;
     root.classList.add("gsap-enhanced");
-    return () => context.revert();
+    return () => {
+      context.revert();
+      hasEnhancedMotion = false;
+      root.classList.remove("gsap-enhanced");
+    };
   });
 
   // FAQ accordion and translated content can change ScrollTrigger positions.
