@@ -60,7 +60,7 @@ export const translations = {
       projects: [
         { type: "SaaS · Gestion commerciale", desc: "Une plateforme de gestion commerciale conçue pour aider les entreprises à piloter leurs opérations depuis un seul espace.", features: ["Stocks & multi-dépôts", "Ventes, achats & caisse", "Factures & suivi client"], status: "Plateforme en ligne", action: "Visiter StockPro" },
         { type: "Logiciel Windows · Commerce textile", desc: "Un logiciel de vente d'habits pensé pour le quotidien des boutiques : gestion des articles, encaissement et tickets de caisse.", features: ["Vente en boutique", "Gestion des articles", "Tickets & base locale"], status: "Logiciel de bureau", action: "Demander une démonstration" },
-        { type: "Site web · Projet client", desc: "Conception d'un site professionnel pour présenter les activités d'Horizon Visa & Immo autour des visas et de l'immobilier.", features: ["Présence en ligne", "Présentation des services", "Expérience responsive"], status: "Réalisation client", action: "Parler d'un site similaire" },
+        { type: "Site web · Projet client", desc: "Conception d'un site professionnel pour présenter les activités d'Horizon Visa & Immo autour des visas et de l'immobilier.", features: ["Présence en ligne", "Présentation des services", "Expérience responsive"], status: "Réalisation client", action: "Visiter Horizon" },
       ],
     },
     artwork: {
@@ -247,7 +247,7 @@ export const translations = {
       projects: [
         { type: "SaaS · Business management", desc: "A management platform helping companies run their daily operations from one place.", features: ["Inventory & multiple warehouses", "Sales, purchasing & cash register", "Invoices & customer tracking"], status: "Live platform", action: "Visit StockPro" },
         { type: "Windows software · Clothing retail", desc: "A clothing retail application designed for day-to-day shop operations: product management, checkout and receipts.", features: ["In-store sales", "Product management", "Receipts & local database"], status: "Desktop application", action: "Request a demo" },
-        { type: "Website · Client project", desc: "A professional website designed to present Horizon Visa & Immo's visa and real-estate services.", features: ["Online presence", "Service presentation", "Responsive experience"], status: "Client project", action: "Discuss a similar website" },
+        { type: "Website · Client project", desc: "A professional website designed to present Horizon Visa & Immo's visa and real-estate services.", features: ["Online presence", "Service presentation", "Responsive experience"], status: "Client project", action: "Visit Horizon" },
       ],
     },
     artwork: {
@@ -434,7 +434,7 @@ export const translations = {
       projects: [
         { type: "SaaS · Jago ɲɛnabɔli", desc: "Jago ɲɛnabɔli baarakɛminɛn min bɛ jago tigiw dɛmɛ u ka baaraw ɲɛnabɔli la yɔrɔ kelen na.", features: ["Stock ani magazin caman", "Feereli, sanli ani caisse", "Facture ani kliyan kɔlɔsili"], status: "Bɛ internet kan", action: "StockPro lajɛ" },
         { type: "Windows logiciel · Fani feereli", desc: "Logiciel min dilannen don fani feereli yɔrɔw kama: fɛn ɲɛnabɔli, feereli ani tikɛtiw.", features: ["Butiki feereli", "Fɛnw ɲɛnabɔli", "Tikɛtiw ani donanw"], status: "Ordinatɛri logiciel", action: "Jirali ɲini" },
-        { type: "Site web · Kliyan ka baara", desc: "An ye Horizon Visa & Immo ka site web dilan walasa u ka visa ani imobilier baaraw ka jira.", features: ["Internet kan jirali", "Baaraw jirali", "Telefɔni kan fana"], status: "Kliyan ka baara", action: "An ka kuma site in na" },
+        { type: "Site web · Kliyan ka baara", desc: "An ye Horizon Visa & Immo ka site web dilan walasa u ka visa ani imobilier baaraw ka jira.", features: ["Internet kan jirali", "Baaraw jirali", "Telefɔni kan fana"], status: "Kliyan ka baara", action: "Horizon ka site lajɛ" },
       ],
     },
     artwork: {
@@ -621,7 +621,7 @@ export const translations = {
       projects: [
         { type: "SaaS · Gestión comercial", desc: "Una plataforma de gestión comercial que permite a las empresas controlar sus operaciones desde un único lugar.", features: ["Inventario y varios almacenes", "Ventas, compras y caja", "Facturas y seguimiento de clientes"], status: "Plataforma en línea", action: "Visitar StockPro" },
         { type: "Software Windows · Tiendas de ropa", desc: "Un programa de ventas para tiendas de ropa: gestión de artículos, cobros y recibos.", features: ["Ventas en tienda", "Gestión de artículos", "Recibos y base de datos local"], status: "Aplicación de escritorio", action: "Solicitar una demostración" },
-        { type: "Sitio web · Proyecto de cliente", desc: "Diseño de un sitio web profesional para presentar los servicios de visados e inmobiliaria de Horizon Visa & Immo.", features: ["Presencia en línea", "Presentación de servicios", "Diseño adaptable"], status: "Proyecto de cliente", action: "Hablar de un sitio similar" },
+        { type: "Sitio web · Proyecto de cliente", desc: "Diseño de un sitio web profesional para presentar los servicios de visados e inmobiliaria de Horizon Visa & Immo.", features: ["Presencia en línea", "Presentación de servicios", "Diseño adaptable"], status: "Proyecto de cliente", action: "Visitar Horizon" },
       ],
     },
     artwork: {
