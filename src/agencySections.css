@@ -72,7 +72,7 @@
   border-radius:23px;overflow:hidden;padding:clamp(20px,3vw,35px);
 }
 .partner-card__logo {display:grid;place-items:center;height:235px;min-width:0;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px rgba(30,53,98,.06);}
-.partner-card__logo img {display:block;width:min(86%,470px);height:86%;object-fit:contain;}
+.partner-card__logo img {display:block;width:min(82%,255px);height:auto;max-height:86%;object-fit:contain;}
 .partner-card__copy {min-width:0;}
 .partner-card__eyebrow {font-size:.69rem;font-weight:850;letter-spacing:.15em;color:var(--accent);}
 .partner-card h3 {font-size:clamp(1.7rem,3vw,2.55rem);color:var(--heading);line-height:1.19;letter-spacing:-.04em;margin:14px 0;}
