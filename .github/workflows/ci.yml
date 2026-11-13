@@ -23,5 +23,7 @@ jobs:
         run: npm ci
       - name: Validate four language catalogs
         run: npm run test:i18n
+      - name: Verify GSAP motion fallbacks
+        run: npm run test:motion
       - name: Build production site
         run: npm run build
