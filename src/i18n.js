@@ -124,6 +124,73 @@ export const translations = {
       formFields: ["Nom", "Entreprise", "Service", "Email"],
       unspecified: "Non précisée",
     },
+    sectors: {
+      "eyebrow": "Chaque secteur mérite sa place en ligne",
+      "title1": "Quel que soit votre métier,",
+      "title2": "faites rayonner votre entreprise.",
+      "intro": "BTP, hôtellerie, transport ou commerce général : BTDIGIT vous aide à présenter vos services, inspirer confiance et faciliter la prise de contact.",
+      "focus": "UNE SOLUTION POUR VOTRE ACTIVITÉ",
+      "cta": "Parlons de votre activité",
+      "carouselLabel": "Solutions pour les secteurs d'activité",
+      "previous": "Secteur précédent",
+      "next": "Secteur suivant",
+      "items": [
+        {
+          "title": "BTP & construction",
+          "description": "Montrez vos réalisations et votre savoir-faire avec un site professionnel qui rassure vos futurs clients.",
+          "benefit": "Portfolio de chantiers, demandes de devis et contact direct."
+        },
+        {
+          "title": "Hôtellerie & restauration",
+          "description": "Présentez vos chambres, prestations, menus ou espaces dans une vitrine élégante accessible sur mobile.",
+          "benefit": "Plus de visibilité et demandes de réservation simplifiées."
+        },
+        {
+          "title": "Transport & logistique",
+          "description": "Mettez en avant vos services, vos destinations ou votre flotte pour être trouvé facilement.",
+          "benefit": "Services clairs, demandes de devis et contact rapide."
+        },
+        {
+          "title": "Commerce général",
+          "description": "Présentez vos produits et facilitez les demandes de commande avec un catalogue moderne.",
+          "benefit": "Catalogue, visibilité et relation client améliorée."
+        }
+      ]
+    },
+    partners: {
+      "eyebrow": "Ils avancent avec BTDIGIT",
+      "title1": "Des relations qui comptent.",
+      "title2": "Nos partenaires.",
+      "intro": "Nous mettons en lumière les entreprises avec lesquelles nous collaborons.",
+      "carouselLabel": "Carrousel de nos partenaires",
+      "previous": "Partenaire précédent",
+      "next": "Partenaire suivant",
+      "partnerLabel": "PARTENAIRE",
+      "relationship": "Partenaire BTDIGIT",
+      "visit": "Visiter leur site",
+      "note": "Les logos appartiennent à leurs marques respectives.",
+      "items": [
+        {
+          "description": "MSF-SARL, partenaire de BTDIGIT."
+        },
+        {
+          "description": "Horizon Visa & Immo, partenaire actif dans les services de visa, voyages et immobilier."
+        }
+      ]
+    },
+    support: {
+      "trigger": "Support",
+      "open": "Ouvrir l'assistance BTDIGIT",
+      "title": "Comment pouvons-nous vous aider ?",
+      "intro": "Choisissez le moyen de contact qui vous convient.",
+      "close": "Fermer l'assistance",
+      "call": "Appeler",
+      "whatsapp": "WhatsApp",
+      "whatsappSub": "Échangez directement avec notre équipe",
+      "write": "Écrire un message",
+      "help": "Ouvrir le centre d'aide",
+      "safety": "Ne communiquez jamais vos mots de passe ni vos codes de paiement."
+    },
     footer: {
       intro: "Sites web, applications et logiciels de gestion. La technologie au service de vos ambitions.",
       explore: "Explorer", find: "Nous retrouver", rights: "Tous droits réservés.",
@@ -243,6 +310,73 @@ export const translations = {
       whatsappAbout: "Hello BTDIGIT, I'd like to know more about",
       formFields: ["Name", "Company", "Service", "Email"],
       unspecified: "Not specified",
+    },
+    sectors: {
+      "eyebrow": "Every industry deserves to be seen",
+      "title1": "Whatever your business,",
+      "title2": "make your brand stand out.",
+      "intro": "Construction, hospitality, transport or general trading: BTDIGIT helps you showcase your services, build trust and make it easier for customers to reach you.",
+      "focus": "DIGITAL SOLUTIONS FOR YOUR BUSINESS",
+      "cta": "Tell us about your business",
+      "carouselLabel": "Solutions for different industries",
+      "previous": "Previous industry",
+      "next": "Next industry",
+      "items": [
+        {
+          "title": "Construction & building",
+          "description": "Show your projects and expertise with a professional site that gives future clients confidence.",
+          "benefit": "Project gallery, quote requests and direct contact."
+        },
+        {
+          "title": "Hotels & restaurants",
+          "description": "Present your rooms, services, menus or venues with an elegant mobile-friendly website.",
+          "benefit": "Better visibility and easier booking enquiries."
+        },
+        {
+          "title": "Transport & logistics",
+          "description": "Highlight your services, destinations or fleet so customers can find you easily.",
+          "benefit": "Clear offers, quote requests and quick contact."
+        },
+        {
+          "title": "General trading",
+          "description": "Showcase your products and make order enquiries easier with a modern catalogue.",
+          "benefit": "Product catalogue, visibility and better customer relationships."
+        }
+      ]
+    },
+    partners: {
+      "eyebrow": "Growing alongside BTDIGIT",
+      "title1": "Relationships that matter.",
+      "title2": "Our partners.",
+      "intro": "Meet the companies we collaborate with.",
+      "carouselLabel": "Our partners carousel",
+      "previous": "Previous partner",
+      "next": "Next partner",
+      "partnerLabel": "PARTNER",
+      "relationship": "BTDIGIT partner",
+      "visit": "Visit their website",
+      "note": "All trademarks and logos belong to their respective owners.",
+      "items": [
+        {
+          "description": "MSF-SARL, a BTDIGIT partner."
+        },
+        {
+          "description": "Horizon Visa & Immo, a partner providing visa, travel and property services."
+        }
+      ]
+    },
+    support: {
+      "trigger": "Support",
+      "open": "Open BTDIGIT support",
+      "title": "How can we help you?",
+      "intro": "Choose how you would like to contact us.",
+      "close": "Close support",
+      "call": "Call us",
+      "whatsapp": "WhatsApp",
+      "whatsappSub": "Chat directly with our team",
+      "write": "Send an email",
+      "help": "Open the help centre",
+      "safety": "Never share passwords or payment verification codes."
     },
     footer: {
       intro: "Websites, applications and management software. Technology to help you achieve your ambitions.",
@@ -364,6 +498,73 @@ export const translations = {
       formFields: ["Tɔgɔ", "Jago", "Baara", "Email"],
       unspecified: "A ma fɔ",
     },
+    sectors: {
+      "eyebrow": "Jago sugu bɛɛ ka kan ka a yɛrɛ jira",
+      "title1": "Aw ka baara sugu o sugu,",
+      "title2": "BTDIGIT bɛ aw dɛmɛ.",
+      "intro": "BTP, otɛli, transport walima jago bɛɛ: BTDIGIT bɛ aw dɛmɛ ka aw ka baaraw jira, ka danaya sɔrɔ ani ka kliyanw ka aw wele.",
+      "focus": "AW KA BAARA KAMA",
+      "cta": "An ka aw ka baara kuma",
+      "carouselLabel": "Jago suguw ka baaraw",
+      "previous": "Jago kɔrɔlen",
+      "next": "Jago nata",
+      "items": [
+        {
+          "title": "BTP ani so dilanni",
+          "description": "Aw ye aw ka so dilanni baaraw ni aw ka dɔnko jira site web ɲuman kan.",
+          "benefit": "Baaraw ka jaw, sɔngɔ ɲininkali ani weleli."
+        },
+        {
+          "title": "Otɛli ani dumunikɛyɔrɔ",
+          "description": "Aw ye aw ka so dɔw, dumuniw ani baaraw jira telefɔni kan fana.",
+          "benefit": "Aw ka jago ka dɔn ani réservation ɲininkali ka nɔgɔya."
+        },
+        {
+          "title": "Transport ani fɛn tawuli",
+          "description": "Aw ye aw ka transport baaraw, taama yɔrɔw ani mobiliw jira.",
+          "benefit": "Baaraw ka ɲɛfɔli ani kliyanw ka weleli ka nɔgɔya."
+        },
+        {
+          "title": "Jago bɛɛ",
+          "description": "Aw ye aw ka feerefɛnw jira catalogue kura kan, walasa kliyanw ka se ka ɲininkali kɛ.",
+          "benefit": "Catalogue, jago jirali ani kliyanw ni ɲɔgɔnci."
+        }
+      ]
+    },
+    partners: {
+      "eyebrow": "An ka baarakɛɲɔgɔnw",
+      "title1": "Baarakɛɲɔgɔnya ka fisa.",
+      "title2": "An ka partenɛriw.",
+      "intro": "Aw ye jago minnu bɛ baara kɛ ni BTDIGIT ye, olu lajɛ.",
+      "carouselLabel": "An ka partenɛriw jirali",
+      "previous": "Partenɛri kɔrɔlen",
+      "next": "Partenɛri nata",
+      "partnerLabel": "PARTENƐRI",
+      "relationship": "BTDIGIT partenɛri",
+      "visit": "U ka site lajɛ",
+      "note": "Logo bɛɛ bɛ a tɔgɔtigi ta ye.",
+      "items": [
+        {
+          "description": "MSF-SARL ye BTDIGIT partenɛri ye."
+        },
+        {
+          "description": "Horizon Visa & Immo ye partenɛri ye visa, taama ani so ko la."
+        }
+      ]
+    },
+    support: {
+      "trigger": "Dɛmɛ",
+      "open": "BTDIGIT dɛmɛ yɔrɔ dabɔ",
+      "title": "An bɛ se k'aw dɛmɛ cogo di?",
+      "intro": "Aw ye kuma cogo sugandi.",
+      "close": "Dɛmɛ datugu",
+      "call": "An wele",
+      "whatsapp": "WhatsApp",
+      "whatsappSub": "An ka ɲɔgɔn kuma WhatsApp kan",
+      "write": "Email ci",
+      "help": "Dɛmɛ yɔrɔ dabɔ",
+      "safety": "Aw kana aw ka mot de passe ani wari sarali kodew di mɔgɔ si ma."
+    },
     footer: {
       intro: "Site web, application ani jago logiciel. Digitali bɛ aw ka miiriyaw dɛmɛ.",
       explore: "Baaraw lajɛ", find: "An sɔrɔ", rights: "Hakɛ bɛɛ maralen don.",
@@ -483,6 +684,73 @@ export const translations = {
       whatsappAbout: "Hola BTDIGIT, me gustaría obtener información sobre",
       formFields: ["Nombre", "Empresa", "Servicio", "Correo"],
       unspecified: "Sin especificar",
+    },
+    sectors: {
+      "eyebrow": "Cada sector merece visibilidad",
+      "title1": "Sea cual sea tu negocio,",
+      "title2": "haz destacar tu empresa.",
+      "intro": "Construcción, hostelería, transporte o comercio general: BTDIGIT te ayuda a presentar tus servicios, generar confianza y facilitar el contacto.",
+      "focus": "SOLUCIONES PARA TU NEGOCIO",
+      "cta": "Hablemos de tu actividad",
+      "carouselLabel": "Soluciones por sector de actividad",
+      "previous": "Sector anterior",
+      "next": "Sector siguiente",
+      "items": [
+        {
+          "title": "Construcción y obras",
+          "description": "Muestra tus proyectos y experiencia con una web profesional que inspire confianza a futuros clientes.",
+          "benefit": "Galería de proyectos, solicitudes de presupuesto y contacto directo."
+        },
+        {
+          "title": "Hoteles y restaurantes",
+          "description": "Presenta habitaciones, servicios, menús o espacios con una web elegante y adaptada al móvil.",
+          "benefit": "Más visibilidad y consultas de reserva sencillas."
+        },
+        {
+          "title": "Transporte y logística",
+          "description": "Destaca tus servicios, destinos o flota para que tus clientes te encuentren fácilmente.",
+          "benefit": "Ofertas claras, solicitudes de presupuesto y contacto rápido."
+        },
+        {
+          "title": "Comercio general",
+          "description": "Presenta tus productos y facilita las consultas de pedido con un catálogo moderno.",
+          "benefit": "Catálogo, visibilidad y mejores relaciones con clientes."
+        }
+      ]
+    },
+    partners: {
+      "eyebrow": "Crecemos con nuestros aliados",
+      "title1": "Relaciones que importan.",
+      "title2": "Nuestros socios.",
+      "intro": "Conoce a las empresas con las que colaboramos.",
+      "carouselLabel": "Carrusel de socios",
+      "previous": "Socio anterior",
+      "next": "Socio siguiente",
+      "partnerLabel": "SOCIO",
+      "relationship": "Socio de BTDIGIT",
+      "visit": "Visitar su web",
+      "note": "Los logotipos pertenecen a sus respectivas marcas.",
+      "items": [
+        {
+          "description": "MSF-SARL, socio de BTDIGIT."
+        },
+        {
+          "description": "Horizon Visa & Immo, socio que ofrece servicios de visados, viajes e inmobiliaria."
+        }
+      ]
+    },
+    support: {
+      "trigger": "Ayuda",
+      "open": "Abrir soporte BTDIGIT",
+      "title": "¿Cómo podemos ayudarte?",
+      "intro": "Elige cómo deseas ponerte en contacto.",
+      "close": "Cerrar soporte",
+      "call": "Llamar",
+      "whatsapp": "WhatsApp",
+      "whatsappSub": "Habla directamente con nuestro equipo",
+      "write": "Enviar un mensaje",
+      "help": "Abrir el centro de ayuda",
+      "safety": "Nunca compartas contraseñas ni códigos de verificación de pagos."
     },
     footer: {
       intro: "Sitios web, aplicaciones y software de gestión. Tecnología al servicio de tus objetivos.",
