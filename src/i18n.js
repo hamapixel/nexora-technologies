@@ -158,7 +158,7 @@ export const translations = {
       ]
     },
     partners: {
-      "eyebrow": "Ils avancent avec BTDIGIT",
+      "nav": "Partenaires",      "eyebrow": "Ils avancent avec BTDIGIT",
       "title1": "Des relations qui comptent.",
       "title2": "Nos partenaires.",
       "intro": "Nous mettons en lumière les entreprises avec lesquelles nous collaborons.",
@@ -345,7 +345,7 @@ export const translations = {
       ]
     },
     partners: {
-      "eyebrow": "Growing alongside BTDIGIT",
+      "nav": "Partners",      "eyebrow": "Growing alongside BTDIGIT",
       "title1": "Relationships that matter.",
       "title2": "Our partners.",
       "intro": "Meet the companies we collaborate with.",
@@ -532,7 +532,7 @@ export const translations = {
       ]
     },
     partners: {
-      "eyebrow": "An ka baarakɛɲɔgɔnw",
+      "nav": "Partenɛriw",      "eyebrow": "An ka baarakɛɲɔgɔnw",
       "title1": "Baarakɛɲɔgɔnya ka fisa.",
       "title2": "An ka partenɛriw.",
       "intro": "Aw ye jago minnu bɛ baara kɛ ni BTDIGIT ye, olu lajɛ.",
@@ -719,7 +719,7 @@ export const translations = {
       ]
     },
     partners: {
-      "eyebrow": "Crecemos con nuestros aliados",
+      "nav": "Socios",      "eyebrow": "Crecemos con nuestros aliados",
       "title1": "Relaciones que importan.",
       "title2": "Nuestros socios.",
       "intro": "Conoce a las empresas con las que colaboramos.",
