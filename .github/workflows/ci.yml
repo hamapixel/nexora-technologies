@@ -25,5 +25,7 @@ jobs:
         run: npm run test:i18n
       - name: Verify GSAP motion fallbacks
         run: npm run test:motion
+      - name: Verify carousels, partner logos and support
+        run: npm run test:agency
       - name: Build production site
         run: npm run build
