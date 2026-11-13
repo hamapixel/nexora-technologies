@@ -6,6 +6,8 @@ import {
 } from "lucide-react";
 import { LANGUAGES, getTranslation } from "./i18n";
 import { ProjectCard } from "./ProjectArtwork";
+import ThreeAccent from "./ThreeAccent";
+import { setupScrollAnimations } from "./scrollMotion";
 
 const BASE = import.meta.env.BASE_URL;
 const WHATSAPP = "22374980744";
@@ -130,28 +132,20 @@ export default function App() {
     return () => document.body.classList.remove("menu-locked");
   }, [menuOpen]);
 
+  // Rebuild scoped scroll effects when the translated content changes size.
+  // React StrictMode and language switches clean up prior ScrollTriggers.
   useEffect(() => {
-    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const elements = document.querySelectorAll(
-      ".portfolio-section .project-card, .services-section .service-card, .method-section .process-step, .about-section .about-content"
-    );
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: "0px 0px -25px 0px" });
-    elements.forEach((item) => {
-      item.classList.add("reveal-pending");
-      observer.observe(item);
-    });
-    return () => {
-      observer.disconnect();
-      elements.forEach((item) => item.classList.remove("reveal-pending", "reveal-visible"));
+    let stop = () => {};
+    const start = () => {
+      stop = setupScrollAnimations();
     };
-  }, []);
+    if (window.gsap && window.ScrollTrigger) start();
+    else window.addEventListener("load", start, { once: true });
+    return () => {
+      window.removeEventListener("load", start);
+      stop();
+    };
+  }, [language]);
 
   const sendContact = (event) => {
     event.preventDefault();
@@ -172,6 +166,7 @@ export default function App() {
 
   return (
     <div className={"site " + (dark ? "theme-dark" : "theme-light")}>
+      <div className="scroll-progress" aria-hidden="true"><span className="scroll-progress__bar"/></div>
       <a className="skip-link" href="#contenu">{t.common.skip}</a>
       <header className="header">
         <div className="container nav-inner">
@@ -206,6 +201,7 @@ export default function App() {
           <div className="hero-grid" aria-hidden="true"/>
           <div className="hero-ribbon" aria-hidden="true"/>
           <div className="hero-aurora" aria-hidden="true"/>
+          <ThreeAccent/>
           <div className="container hero-layout">
             <div className="hero-copy">
               <Eyebrow>{t.hero.eyebrow}</Eyebrow>
