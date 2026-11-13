@@ -918,3 +918,72 @@ img { display: block; }
   .hero-three-stage { display: none !important; }
   .gsap-enhanced .hero-showcase { will-change: auto; }
 }
+
+
+/* BTDIGIT founder signature — gentle left/right typography motion. */
+.about-content .founder-name {
+  display: inline-block;
+  max-width: 100%;
+  margin: 18px 0 7px;
+  padding: 0 0 5px;
+  color: var(--heading);
+  font-family: "Plus Jakarta Sans", "DM Sans", "Segoe UI", sans-serif;
+  font-size: clamp(2.25rem, 4.1vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.055em;
+  background: linear-gradient(105deg, var(--heading) 0%, var(--heading) 33%, #bd87ff 49%, var(--heading) 68%, var(--heading) 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-wrap: balance;
+  animation: founderNameSway 5.8s ease-in-out infinite, founderNameShimmer 8s ease-in-out infinite;
+}
+.about-content .founder-tagline {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 22px;
+  padding-left: 17px;
+  color: var(--accent);
+  font-family: "DM Sans", "Segoe UI", sans-serif;
+  font-size: clamp(.96rem, 1.45vw, 1.18rem);
+  font-weight: 800;
+  letter-spacing: -.01em;
+  line-height: 1.55;
+}
+.about-content .founder-tagline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .32em;
+  bottom: .32em;
+  width: 3px;
+  border-radius: 5px;
+  background: linear-gradient(#b97afa,#7394fd);
+}
+.theme-light .about-content .founder-name {
+  background-image: linear-gradient(105deg, #17243b 0%, #17243b 33%, #8a4bd0 49%, #17243b 68%, #17243b 100%);
+}
+@keyframes founderNameSway {
+  0%, 100% { transform: translate3d(0,0,0); }
+  25% { transform: translate3d(6px,0,0); }
+  50% { transform: translate3d(0,0,0); }
+  75% { transform: translate3d(-6px,0,0); }
+}
+@keyframes founderNameShimmer {
+  0%, 100% { background-position: 100% center; }
+  50% { background-position: 0 center; }
+}
+@media (max-width: 600px) {
+  .about-content .founder-name { font-size: clamp(2.05rem, 8.5vw, 3.1rem); }
+  .about-content .founder-tagline { margin-bottom: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-content .founder-name {
+    animation: none !important;
+    transform: none !important;
+    background-position: 0 center;
+  }
+}
