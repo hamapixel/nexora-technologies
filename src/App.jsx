@@ -10,6 +10,7 @@ import ThreeAccent from "./ThreeAccent";
 import { IndustriesSection, PartnersSection } from "./BusinessSections";
 import SupportModal from "./SupportModal";
 import { setupScrollAnimations } from "./scrollMotion";
+import { RevealHeadline, moveSpotlight, resetSpotlight, moveShowcase, resetShowcase } from "./PremiumMotion";
 
 const BASE = import.meta.env.BASE_URL;
 const WHATSAPP = "22374980744";
@@ -209,7 +210,7 @@ export default function App() {
           <div className="container hero-layout">
             <div className="hero-copy">
               <Eyebrow>{t.hero.eyebrow}</Eyebrow>
-              <h1>{t.hero.title1}<br/><span>{t.hero.title2}</span></h1>
+              <RevealHeadline first={t.hero.title1} second={t.hero.title2}/>
               <p className="hero-description">{t.hero.description}</p>
               <div className="hero-ctas">
                 <a className="btn btn-primary" href="#realisations">{t.hero.actionPortfolio} <ArrowUpRight size={19}/></a>
@@ -221,7 +222,8 @@ export default function App() {
                 <span><MapPin size={17}/>{t.hero.trust3}</span>
               </div>
             </div>
-            <div className="hero-showcase" aria-label={t.hero.showcaseAlt}>
+            <div className="hero-showcase" aria-label={t.hero.showcaseAlt}
+              onPointerMove={moveShowcase} onPointerLeave={resetShowcase}>
               <div className="showcase-halo" aria-hidden="true"/>
               <div className="showcase-main">
                 <div className="showcase-top"><span><span className="showcase-signal"/> BTDIGIT / {t.common.portfolio.toUpperCase()}</span><span>2026</span></div>
@@ -261,7 +263,8 @@ export default function App() {
               {t.services.items.map(([title, description], index) => {
                 const Icon = serviceIcons[index];
                 return (
-                  <article className="service-card" key={index}>
+                  <article className="service-card premium-spotlight" key={index}
+                    onPointerMove={moveSpotlight} onPointerLeave={resetSpotlight}>
                     <div className="service-card-top"><span>{String(index + 1).padStart(2, "0")}</span><span className="service-icon"><Icon size={24}/></span></div>
                     <h3>{title}</h3><p>{description}</p>
                     <a href="#contact" aria-label={t.services.actionLabel + ": " + title}>{t.services.action} <ArrowUpRight size={17}/></a>
