@@ -1004,6 +1004,9 @@ img { display: block; }
 .hero h1.hero-title-motion .hero-title-accent {
   color: var(--accent);
 }
+.hero h1.hero-title-motion .hero-word-clip {
+  color: inherit;
+}
 .hero-word-clip {
   display: inline-block;
   vertical-align: bottom;
