@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUpRight, Boxes, Check, ExternalLink, Globe2, ShieldCheck, Shirt } from "lucide-react";
+import { moveSpotlight, resetSpotlight } from "./PremiumMotion";
 
 const WHATSAPP = "22374980744";
 
@@ -71,7 +72,8 @@ export function ProjectCard({ project, index, t }) {
   const href = project.url || "https://wa.me/" + WHATSAPP + "?text=" +
     encodeURIComponent(t.contact.whatsappAbout + " " + project.title + ".");
   return (
-    <article className={"project-card project-" + project.id}>
+    <article className={"project-card premium-spotlight project-" + project.id}
+      onPointerMove={moveSpotlight} onPointerLeave={resetSpotlight}>
       <div className="project-media"><ProjectArtwork type={project.id} t={t}/></div>
       <div className="project-detail">
         <div className="project-meta"><span>{content.type}</span><span>{String(index + 1).padStart(2, "0")} / 03</span></div>
