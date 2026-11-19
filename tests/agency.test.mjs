@@ -66,3 +66,21 @@ test("GSAP includes new sections without reintroducing a 3D car showroom", () =>
   assert.match(content("src/scrollMotion.js"), /partners-section/);
   assert.doesNotMatch(content("src/App.jsx"), /Showroom3D/);
 });
+
+
+test("premium motion enhances hero and cards without breaking mobile, translations or accessibility", () => {
+  const app = content("src/App.jsx");
+  const portfolio = content("src/ProjectArtwork.jsx");
+  const motion = content("src/PremiumMotion.jsx");
+  const css = content("src/styles.css");
+  assert.match(app, /RevealHeadline first=\{t\.hero\.title1\} second=\{t\.hero\.title2\}/);
+  assert.match(app, /premium-spotlight/);
+  assert.match(portfolio, /premium-spotlight/);
+  assert.match(motion, /aria-label=/);
+  assert.match(motion, /aria-hidden="true"/);
+  assert.match(motion, /event\.pointerType/);
+  assert.match(css, /prefers-reduced-motion: reduce/);
+  assert.match(css, /btdigitWordRise/);
+  assert.match(css, /\.hero-showcase \.showcase-main/);
+  assert.match(css, /\.premium-spotlight::after/);
+});

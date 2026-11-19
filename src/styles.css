@@ -987,3 +987,124 @@ img { display: block; }
     background-position: 0 center;
   }
 }
+
+
+/*
+ * BTDIGIT Motion Edition — original, lightweight interactions.
+ * Editorial word reveal inspired by React Bits; spotlight and refined
+ * surface motion inspired by Skiper UI. No upstream component code copied.
+ */
+.hero h1.hero-title-motion {
+  text-wrap: balance;
+}
+.hero h1.hero-title-motion .hero-title-line {
+  display: block;
+  color: var(--heading);
+}
+.hero h1.hero-title-motion .hero-title-accent {
+  color: var(--accent);
+}
+.hero h1.hero-title-motion .hero-word-clip {
+  color: inherit;
+}
+.hero-word-clip {
+  display: inline-block;
+  vertical-align: bottom;
+  overflow: hidden;
+  margin-right: .19em;
+  margin-bottom: -.06em;
+  padding-bottom: .06em;
+}
+.hero h1.hero-title-motion .hero-word {
+  display: inline-block;
+  color: inherit;
+  will-change: transform, opacity;
+  animation: btdigitWordRise .9s cubic-bezier(.2,.75,.2,1) both;
+}
+@keyframes btdigitWordRise {
+  from { opacity: 0; transform: translate3d(0,105%,0) rotate(1.8deg); filter: blur(5px); }
+  to { opacity: 1; transform: translate3d(0,0,0) rotate(0); filter: blur(0); }
+}
+
+/* Pointer spotlights are overlays, never layout-affecting transforms. */
+.premium-spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.premium-spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  background: radial-gradient(
+    340px circle at var(--spotlight-x, 50%) var(--spotlight-y, 20%),
+    rgba(177,124,255,.19) 0,
+    rgba(99,152,242,.065) 34%,
+    transparent 74%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .28s ease;
+}
+.theme-light .premium-spotlight::after {
+  background: radial-gradient(
+    340px circle at var(--spotlight-x, 50%) var(--spotlight-y, 20%),
+    rgba(116,68,190,.12) 0,
+    rgba(55,112,192,.045) 38%,
+    transparent 74%
+  );
+}
+@media (hover:hover) and (pointer:fine) {
+  .premium-spotlight:hover::after { opacity: 1; }
+  .hero-showcase .showcase-main {
+    animation: none;
+    transform: perspective(1200px)
+      rotateY(var(--showcase-y, -5deg))
+      rotateX(var(--showcase-x, 2deg));
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
+    transform-style: preserve-3d;
+  }
+  .hero-showcase:hover .showcase-main {
+    box-shadow: 0 42px 105px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.1);
+  }
+}
+/* A restrained light sweep highlights the primary conversion action. */
+.hero-ctas .btn-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.hero-ctas .btn-primary::after {
+  content: "";
+  position: absolute;
+  width: 32%;
+  height: 150%;
+  top: -25%;
+  left: -65%;
+  transform: skewX(-25deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+  pointer-events: none;
+  animation: btdigitCtaSweep 5.8s ease-in-out 1.7s infinite;
+}
+@keyframes btdigitCtaSweep {
+  0%, 72%, 100% { left: -65%; }
+  87% { left: 140%; }
+}
+@media (max-width: 899px), (hover:none), (pointer:coarse) {
+  .hero-showcase .showcase-main {
+    transform: none;
+  }
+  .premium-spotlight::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero h1.hero-title-motion .hero-word,
+  .hero-ctas .btn-primary::after {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .premium-spotlight::after { display: none; }
+  .hero-showcase .showcase-main { transform: none !important; transition: none !important; }
+}
